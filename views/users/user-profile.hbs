@@ -4,8 +4,13 @@
   <button>
     <a href="/userProfile">Reload the page</a>
   </button>
+   <button>
+    <a href="/editinfo/{{userInSession._id}}">Edit user info</a>
+  </button>
 {{else}}
   
   <br><p>Still no logged in user, sorry!</p>
  
 {{/if}}
+
+
