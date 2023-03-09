@@ -1,1 +1,28 @@
-<p>this the page where you can change your user details</p>
+<h2>Change you info</h2>
+
+{{#if userInSession}}
+<div id="form">
+  <h2>Change your info</h2>
+  <form action="/editinfo/{{userInSession._id}}" method="POST">
+ 
+    <label> Username
+      <input type="text" name="username" value="{{userInSession.username}}" />
+    </label>
+ 
+    <label> Email
+      <input type="email" name="email" value="{{userInSession.email}}" />
+    </label>
+ 
+    <label> Password
+      <input type="password" name="password" placeholder="********" />
+    </label>
+ 
+    <button type="submit">update account</button>
+ 
+      {{#if errorMessage}}
+    <p class="error">{{errorMessage}}</p>
+  {{/if}}
+  
+{{/if}}
+  </form>
+</div>
