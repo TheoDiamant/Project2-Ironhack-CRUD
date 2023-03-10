@@ -1,1 +1,14 @@
 <p>This page will render a game when a user click on one of the game on the all-game page</p>
+
+{{#if userInSession}}
+<form action="/comment" method="post">
+    <label>{{userInSession.username}}</label>
+    <label> Add a comment
+      <input type="text" name="content" placeholder="This game is great !" />
+    </label>
+ 
+    <button type="submit">Post</button>
+</form>
+
+
+{{/if}}

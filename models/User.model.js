@@ -21,9 +21,10 @@ const userSchema = new Schema(
       type: String,
       required: true
     },
-
-    like: [{type: Schema.Types.ObjectId, ref: "Image"}],
-    comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }]
+    
+    comments: [
+       { type: Schema.Types.ObjectId, ref: "Comment" }
+      ]
     
   },
   {

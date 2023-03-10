@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 const { isLoggedIn, isLoggedOut } = require('../../middleware/route-guard.js');
 
 
-
+////////:DISPLAY EDIT INFO PAGE WITH LAYOUT FOR LOGGEDIN USER///////////
 router.get("/editinfo", isLoggedIn, (req, res, next) => {
         console.log(req.session.currentUser._id)
         res.render("users/user-edit-info.hbs", { 
@@ -16,6 +16,12 @@ router.get("/editinfo", isLoggedIn, (req, res, next) => {
          })
     
 })
+
+
+////////RECEIVE EDIT INFO PAGE///////////
+////////NEED TO DO 3 DIFFERENT FORMS FOR EACH FIELD////////
+//////WHEN WE DO IN SINGLE FORM, IF YOU CHANGE ONLY ONE FIELD AND YOU UPDATE//////////
+//////////////THE OTHER WILL BECOME EMPTY////
 
 router.post("/editinfo", isLoggedIn, (req, res, next) => {
 
@@ -33,6 +39,7 @@ router.post("/editinfo", isLoggedIn, (req, res, next) => {
       });
 })
 
+////////DELETE THE USER ACCOUNT///////////
 router.post("/delete",(req, res, next) => {
     User.findByIdAndRemove(req.session.currentUser._id)
     .then(() => {

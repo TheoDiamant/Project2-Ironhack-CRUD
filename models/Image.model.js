@@ -1,15 +1,15 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require("mongoose")
 
-const commentSchema = new Schema(
-  {
-    author: { type: Schema.Types.ObjectId, ref: "User" },
-    content: String
-  },
-  {
-    timestamps: true
-  }
-);
+const imageSchema = (
+    {
+        url: {
+          type: String,
+          required: true
+        },
+    }
+)
 
-const Comment = model("Comment", commentSchema);
+const Image = model("Image", imageSchema)
 
-module.exports = Comment;
+module.exports = Image
+
