@@ -69,7 +69,6 @@ router.post('/signup', isLoggedOut, (req, res, next) => {
 
    // POST login route ==> to process form data
 router.post('/login', isLoggedOut, (req, res, next) => {
-    console.log('SESSION =====> ', req.session);
     const { email, password } = req.body;
    
     if (email === '' || password === '') {
@@ -97,7 +96,7 @@ router.post('/login', isLoggedOut, (req, res, next) => {
   });
 
 router.get('/userProfile', isLoggedIn, (req, res) => {
-  
+
   res.render('users/user-profile', { userInSession: req.session.currentUser });
 });
 
@@ -107,6 +106,8 @@ router.post('/logout', isLoggedIn, (req, res, next) => {
       res.redirect('/');
     });
   });
+
+  
 
 
 
