@@ -8,13 +8,16 @@ const { isLoggedIn, isLoggedOut } = require('../../middleware/route-guard.js');
 
 
 
-router.get("/editinfo", (req, res, next) => {
+router.get("/editinfo", isLoggedIn, (req, res, next) => {
         console.log(req.session.currentUser._id)
-        res.render("users/user-edit-info.hbs", { userInSession: req.session.currentUser })
+        res.render("users/user-edit-info.hbs", { 
+            userInSession: req.session.currentUser,
+            layout: "loggedin-user.hbs" 
+         })
     
 })
 
-router.post("/editinfo", (req, res, next) => {
+router.post("/editinfo", isLoggedIn, (req, res, next) => {
 
     const { username, email, password } = req.body;
     

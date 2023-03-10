@@ -20,7 +20,14 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: true
-    }
+    },
+
+    like: [
+      {
+        type: Schema.Types.ObjectId, ref: "Image"
+      }
+    ]
+    
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`    
