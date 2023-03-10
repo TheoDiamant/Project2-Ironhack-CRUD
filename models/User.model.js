@@ -22,11 +22,8 @@ const userSchema = new Schema(
       required: true
     },
 
-    like: [
-      {
-        type: Schema.Types.ObjectId, ref: "Image"
-      }
-    ]
+    like: [{type: Schema.Types.ObjectId, ref: "Image"}],
+    comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }]
     
   },
   {
