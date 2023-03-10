@@ -31,7 +31,6 @@ router.post("/editinfo", (req, res, next) => {
 })
 
 router.post("/delete",(req, res, next) => {
-    console.log(req.session.currentUser._id)
     User.findByIdAndRemove(req.session.currentUser._id)
     .then(() => {
       res.redirect("/")
@@ -40,6 +39,5 @@ router.post("/delete",(req, res, next) => {
       console.log(`Cant delete the account: ${err}`)
     })
   })
-
 
 module.exports = router;
