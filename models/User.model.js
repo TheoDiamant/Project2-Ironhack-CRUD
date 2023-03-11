@@ -20,7 +20,12 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: true
-    }
+    },
+    
+    comments: [
+       { type: Schema.Types.ObjectId, ref: "Comment" }
+      ]
+    
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`    

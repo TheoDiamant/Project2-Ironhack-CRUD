@@ -69,7 +69,6 @@ router.post('/signup', isLoggedOut, (req, res, next) => {
 
    // POST login route ==> to process form data
 router.post('/login', isLoggedOut, (req, res, next) => {
-    console.log('SESSION =====> ', req.session);
     const { email, password } = req.body;
    
     if (email === '' || password === '') {
@@ -87,7 +86,7 @@ router.post('/login', isLoggedOut, (req, res, next) => {
         } else if (bcryptjs.compareSync(password, user.password)) {
 
         req.session.currentUser = user;
-        res.redirect('/userProfile');
+        res.redirect("/games")
 
         } else {
           res.render('auth/login', { errorMessage: 'Incorrect password.' });
@@ -97,8 +96,10 @@ router.post('/login', isLoggedOut, (req, res, next) => {
   });
 
 router.get('/userProfile', isLoggedIn, (req, res) => {
-  
-  res.render('users/user-profile', { userInSession: req.session.currentUser });
+
+  res.render('users/user-profile', { 
+    userInSession: req.session.currentUser,
+    layout: "loggedin-user.hbs" });
 });
 
 router.post('/logout', isLoggedIn, (req, res, next) => {
@@ -107,6 +108,8 @@ router.post('/logout', isLoggedIn, (req, res, next) => {
       res.redirect('/');
     });
   });
+
+  
 
 
 

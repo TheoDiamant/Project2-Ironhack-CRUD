@@ -3,7 +3,7 @@
 {{#if userInSession}}
 <div id="form">
   <h2>Change your info</h2>
-  <form action="/editinfo/{{userInSession._id}}" method="POST">
+  <form action="/editinfo" method="POST">
  
     <label> Username
       <input type="text" name="username" value="{{userInSession.username}}" />

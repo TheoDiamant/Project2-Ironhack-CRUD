@@ -5,8 +5,13 @@
     <a href="/userProfile">Reload the page</a>
   </button>
    <button>
-    <a href="/editinfo/{{userInSession._id}}">Edit user info</a>
+    <a href="/editinfo">Edit user info</a>
   </button>
+   <form action="/delete" method="POST">
+
+   <button type="submit"> Delete the account </button>
+
+</form>
 {{else}}
   
   <br><p>Still no logged in user, sorry!</p>
