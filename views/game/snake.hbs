@@ -1,6 +1,6 @@
 <div id="snake">
-    <div class="game-intro">
-      <img src="./images/Logo.png" alt="Logo Snake 2 3310" class="logo-img" />
+  <div class="game-intro">
+    <img src="./images/Logo.png" alt="Logo {{gameTitle}}" class="logo-img" />
       <br />
       <button id="start-button">Start your 3310!</button>
       <button id="reload-button">Reload the game</button>
@@ -22,4 +22,6 @@
     </div>
 </div>
       
-<script src="./js/snake/index.js"></script>
+
+<script src="{{gameScriptPath}}"></script>
+<link rel="stylesheet" href="{{gameStylesheetPath}}" />

@@ -3,7 +3,9 @@ const router = new Router();
 
 const User = require("../../models/User.model");
 const Comment = require("../../models/Comment.model");
+const Score = require("../../models/Score.model");
 
+const snakeConfig = require("../../public/snake-config");
 const mongoose = require("mongoose");
 
 const { isLoggedIn, isLoggedOut } = require("../../middleware/route-guard.js");
@@ -38,21 +40,35 @@ router.get("/snake", isLoggedIn, (req, res, next) => {
     res.render("game/snake", {
         userInSession: req.session.currentUser,
         layout: "game-layout",
-    });
+        gameTitle: snakeConfig.gameTitle,
+        gameScriptPath: snakeConfig.gameScriptPath,
+        gameStylesheetPath: snakeConfig.gameStylesheetPath
+      });
 });
 
 // création d'une route post pour récupérer le nouveau score du jeu
 router.post("/snake", isLoggedIn, (req, res, next) => {
-const { score } = req.body
-console.log(score) // console log pour voir le score s'affiché
-    res.json(`Score set successfully ${score}`);
-    // doit créer then.create et mettre bdd
-});
+    const { score } = req.body;
+
+    Score.create( { score } )
+    .then(userScore => {
+        return User.findByIdAndUpdate(req.session.currentUser._id, {$push: {score: userScore._id} }, {new: true} )
+    })
+    console.log(score); // console log pour voir le score s'affiché
+    const response = { message: `Score set successfully ${score}` };
+    res.json(response);
+    res.end(); // fermer la réponse
+  });
 
 ///// CREATE NEW COMMMENT////////IN PROGRES////////
 router.post("/comment", isLoggedIn, (req, res, next) => {
+
   const { content } = req.body;
-  const user = req.session.userId;
+
+  Comment.create({ content })
+  .then(newComment => {
+    return User.findByIdAndUpdate(req.session.currentUser._id, {$push: {comments: newComment._id} }, {new: true} )
+  })
 });
 
 module.exports = router;
