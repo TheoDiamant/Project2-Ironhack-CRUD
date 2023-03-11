@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>{{appTitle}}</title>
-      <link rel="stylesheet" href="/stylesheets/style.css" />
+      <link rel="stylesheet" href="./stylesheets/stylesnake.css" />
    </head>
 
    <body>
@@ -26,9 +26,20 @@
       </ul>
    </nav>
 
-        {{{body}}}
-        <script src="/js/script.js"></script>
-    </body>
+      {{{body}}}
+
+   </body>
+{{#if userInSession}}
+<form action="/comment" method="post">
+    <label>{{userInSession.username}}</label>
+    <label> Add a comment
+      <input type="text" name="content" placeholder="This game is great !" />
+    </label>
+ 
+    <button type="submit">Post</button>
+</form>
 
 
-    </html>
+{{/if}}
+
+</html>

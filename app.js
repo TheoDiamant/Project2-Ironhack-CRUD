@@ -35,8 +35,8 @@ app.use('/', authRouter);
 const userEditRouter = require('./routes/user/edit.routes');
 app.use('/', userEditRouter);
 
-const gamesRoute = require('./routes/games/game.routes');
-app.use('/', gamesRoute);
+const SnakeJS = require('./routes/games/game.routes');
+app.use('/', SnakeJS);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

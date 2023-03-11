@@ -1,0 +1,10 @@
+à faire
+
+enlever les liens signup et login quand user loggedin
+faire une redirection sur la page profil quand il se logg
+
+page name of the game voir pour intégrer le snake
+
+voir modification user avec le form
+
+raph intègre le snake comme jeu 

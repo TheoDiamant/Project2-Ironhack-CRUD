@@ -1,19 +1,19 @@
 body {
   padding: 50px;
-  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
- 
+
 a {
   color: #00b7ff;
   text-decoration: none;
   font-size: 1.5em;
 }
- 
+
 form {
   margin: 30px auto;
   width: 380px;
 }
- 
+
 form label {
   color: #666;
   display: inline-block;
@@ -21,7 +21,7 @@ form label {
   text-align: center;
   width: 100%;
 }
- 
+
 form input,
 form button {
   box-sizing: border-box;
@@ -31,7 +31,7 @@ form button {
   width: 100%;
   margin-bottom: 20px;
 }
- 
+
 form button {
   background: #43a3e6;
   border: 1px solid #43a3e6;
@@ -46,13 +46,13 @@ form button {
   transition: 0.3s ease background;
   width: 100%;
 }
- 
+
 form button:hover {
   background: #fff;
   color: #43a3e6;
   transition: 0.3s ease background;
 }
- 
+
 .error {
   background: #f02b63;
   box-sizing: border-box;
@@ -61,47 +61,460 @@ form button:hover {
   padding: 20px;
   width: 100%;
 }
- 
+
 ul {
   border-bottom: 2px solid #43a3e6;
   height: 30px;
   padding: 1em 0;
   list-style-type: none;
 }
- 
+
 ul li {
   line-height: 20px;
 }
- 
+
 #to-right {
   padding: 1em;
   float: right;
 }
- 
+
 #to-right span {
   color: #43a3e6;
   font-size: 1.5em;
 }
- 
+
 #form h2 {
   display: flex;
   justify-content: center;
 }
- 
+
 #to-left {
   float: left;
 }
- 
+
 #to-left p a {
   color: #000;
   font-weight: bold;
   font-size: 2em;
 }
- 
+
 #logout-form {
   display: inline;
 }
- 
+
 #logout-form button {
   width: 120px;
 }
+
+.game-intro {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  float: left;
+  padding: 1.5% 10%;
+  align-items: center;
+}
+
+.game-intro p {
+  font-size: 18px;
+  font-family: "Verdana";
+}
+
+.logo-img {
+  width: 350px;
+}
+
+.arrows-img {
+  width: 150px;
+}
+
+#start-button {
+  width: 350px;
+  font-size: 30px;
+  background-color: #870007;
+  color: #fff;
+  padding: 20px 40px;
+  border: 0;
+  box-shadow: 0;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+#start-button {
+  align-items: center;
+  background-color: #fee6e3;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#start-button:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform 0.2s ease-out;
+  z-index: -1;
+}
+
+#start-button:hover:after {
+  transform: translate(0, 0);
+}
+
+#start-button:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+#start-button:hover {
+  outline: 0;
+}
+
+/* --------------------- */
+
+#game-board {
+  float: left;
+  padding: 20px 0px;
+  position: relative;
+}
+
+canvas {
+  position: relative;
+  border: 0px solid greenyellow;
+  z-index: 1;
+  padding-left: 108px;
+  padding-top: 85px;
+}
+
+#phone3310 {
+  position: absolute;
+  z-index: 2;
+  width: 722px;
+  box-shadow: 8px 8px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+#game-over {
+  z-index: 1;
+  padding-left: 108px;
+  height: 450px;
+  position: relative;
+  display: none;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #96d202;
+}
+
+#reload-button {
+  background-color: #3dd1e7;
+  border: 0 solid #e5e7eb;
+  box-sizing: border-box;
+  color: #000000;
+  display: flex;
+  font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.75rem;
+  padding: 0.75rem 1.65rem;
+  position: relative;
+  text-align: center;
+  text-decoration: none #000000 solid;
+  text-decoration-thickness: auto;
+  width: 100%;
+  max-width: 460px;
+  position: relative;
+  cursor: pointer;
+  transform: rotate(-2deg);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#reload-button:focus {
+  outline: 0;
+}
+
+#reload-button:after {
+  content: "";
+  position: absolute;
+  border: 1px solid #000000;
+  bottom: 4px;
+  left: 4px;
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
+}
+
+#reload-button:hover:after {
+  bottom: 2px;
+  left: 2px;
+}
+
+.arrow-8 {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  background: linear-gradient(currentColor 0 0) center/calc(100% - 30px) 10px,
+    conic-gradient(
+        from -136deg at right,
+        #0000,
+        currentColor 1deg 90deg,
+        #0000 91deg
+      )
+      right/15px 100%,
+    conic-gradient(
+        from 44deg at left,
+        #0000,
+        currentColor 1deg 90deg,
+        #0000 91deg
+      )
+      left / 15px 100%;
+  background-repeat: no-repeat;
+  animation: a8 2s;
+  animation-iteration-count: 3;
+}
+.arrow-8:before {
+  content: "";
+  flex: 1;
+  background: inherit;
+  transform: rotate(90deg);
+}
+
+@keyframes a8 {
+  90%,
+  100% {
+    width: 80px;
+  }
+}
+
+/* CSS Snake */
+/* 
+.game-intro {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  float: left;
+  padding: 1.5% 10%;
+  align-items: center;
+}
+
+.game-intro p {
+  font-size: 18px;
+  font-family: "Verdana";
+}
+
+.logo-img {
+  width: 350px;
+}
+
+.arrows-img {
+  width: 150px;
+}
+
+#start-button {
+  width: 350px;
+  font-size: 30px;
+  background-color: #870007;
+  color: #fff;
+  padding: 20px 40px;
+  border: 0;
+  box-shadow: 0;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+#start-button {
+  align-items: center;
+  background-color: #fee6e3;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#start-button:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform 0.2s ease-out;
+  z-index: -1;
+}
+
+#start-button:hover:after {
+  transform: translate(0, 0);
+}
+
+#start-button:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+#start-button:hover {
+  outline: 0;
+}
+*/
+/* --------------------- */
+/*
+#game-board {
+  float: left;
+  padding: 20px 0px;
+  position: relative;
+}
+
+canvas {
+  position: relative;
+  border: 0px solid greenyellow;
+  z-index: 1;
+  padding-left: 108px;
+  padding-top: 85px;
+}
+
+#phone3310 {
+  position: absolute;
+  z-index: 2;
+  width: 722px;
+  box-shadow: 8px 8px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+#game-over {
+  z-index: 1;
+  padding-left: 108px;
+  height: 450px;
+  position: relative;
+  display: none;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #96d202;
+}
+
+#reload-button {
+  background-color: #3dd1e7;
+  border: 0 solid #e5e7eb;
+  box-sizing: border-box;
+  color: #000000;
+  display: flex;
+  font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.75rem;
+  padding: 0.75rem 1.65rem;
+  position: relative;
+  text-align: center;
+  text-decoration: none #000000 solid;
+  text-decoration-thickness: auto;
+  width: 100%;
+  max-width: 460px;
+  position: relative;
+  cursor: pointer;
+  transform: rotate(-2deg);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#reload-button:focus {
+  outline: 0;
+}
+
+#reload-button:after {
+  content: "";
+  position: absolute;
+  border: 1px solid #000000;
+  bottom: 4px;
+  left: 4px;
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
+}
+
+#reload-button:hover:after {
+  bottom: 2px;
+  left: 2px;
+}
+
+.arrow-8 {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  background: linear-gradient(currentColor 0 0) center/calc(100% - 30px) 10px,
+    conic-gradient(
+        from -136deg at right,
+        #0000,
+        currentColor 1deg 90deg,
+        #0000 91deg
+      )
+      right/15px 100%,
+    conic-gradient(
+        from 44deg at left,
+        #0000,
+        currentColor 1deg 90deg,
+        #0000 91deg
+      )
+      left / 15px 100%;
+  background-repeat: no-repeat;
+  animation: a8 2s;
+  animation-iteration-count: 3;
+}
+.arrow-8:before {
+  content: "";
+  flex: 1;
+  background: inherit;
+  transform: rotate(90deg);
+}
+
+@keyframes a8 {
+  90%,
+  100% {
+    width: 80px;
+  }
+} 
+*/
