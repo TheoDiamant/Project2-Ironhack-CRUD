@@ -129,6 +129,7 @@ const myGameArea = {
     }
   },
 
+
   updateGameOver: function () {
     for (let i = 1; i < myGameArea.snake.length; i++) {
       if (

@@ -74,13 +74,24 @@ router.post("/snake", isLoggedIn, (req, res, next) => {
 
 ///// USER CREATE NEW COMMMENT////////////////
 router.post("/comment", isLoggedIn, (req, res, next) => {
-
-  const { content } = req.body;
-
-  Comment.create({ content })
-  .then(newComment => {
-    return User.findByIdAndUpdate(req.session.currentUser._id, {$push: {comments: newComment._id} }, {new: true} )
-  })
-});
+    const { content } = req.body;
+  
+    Comment.create({ content })
+      .then(newComment => {
+        return User.findByIdAndUpdate(
+          req.session.currentUser._id, 
+          { $push: { comments: newComment._id } },
+          { new: true }
+        );
+      })
+      .then(() => {
+        const response = { message: 'Comment posted successfully' };
+        res.status(200).json(response);
+      })
+      .catch(err => {
+        console.error(err);
+        res.status(500).json({ error: 'Internal server error' });
+      });
+  });
 
 module.exports = router;

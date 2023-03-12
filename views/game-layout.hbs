@@ -29,7 +29,7 @@
       {{{body}}}
 
 {{#if userInSession}}
-<form action="/comment" method="post">
+<form id="comment-form" action="/comment" method="post">
     <label>{{userInSession.username}}</label>
     <label> Add a comment
       <input type="text" name="content" placeholder="This game is great !" />
@@ -37,9 +37,33 @@
  
     <button type="submit">Post</button>
 </form>
-
-
 {{/if}}
    </body>
+
+   <script>
+      // sélectionnez le formulaire avec l'identifiant unique "comment-form"
+const commentForm = document.querySelector("#comment-form");
+
+// ajoutez un écouteur d'événements pour l'événement de soumission de formulaire
+commentForm.addEventListener("submit", (event) => {
+  // empêchez la soumission du formulaire pour éviter le rechargement de la page
+  event.preventDefault();
+
+  // récupérez le contenue du formulaire du formulaire
+  const formData = new FormData(commentForm);
+
+  // envoyez la requête AJAX pour enregistrer le nouveau commentaire
+  fetch("/comment", {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => {
+      // traitez la réponse de la requête AJAX si nécessaire
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+});
+   </script>
 
 </html>
