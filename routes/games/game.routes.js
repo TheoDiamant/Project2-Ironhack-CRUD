@@ -49,18 +49,30 @@ router.get("/snake", isLoggedIn, (req, res, next) => {
 // création d'une route post pour récupérer le nouveau score du jeu
 router.post("/snake", isLoggedIn, (req, res, next) => {
     const { score } = req.body;
-
-    Score.create( { score } )
-    .then(userScore => {
-        return User.findByIdAndUpdate(req.session.currentUser._id, {$push: {score: userScore._id} }, {new: true} )
-    })
-    console.log(score); // console log pour voir le score s'affiché
-    const response = { message: `Score set successfully ${score}` };
-    res.json(response);
-    res.end(); // fermer la réponse
+  
+    Score.create({ score })
+      .then(userScore => {
+        return User.findByIdAndUpdate(req.session.currentUser._id, { $push: { score: userScore._id } }, { new: true })
+          .then(() => {
+            const response = { message: `Score set successfully ${score}` };
+            res.json(response);
+            res.end();
+          })
+          .catch(err => {
+            console.error(err);
+            res.status(500).json({ error: 'Internal server error' });
+          });
+      })
+      .catch(err => {
+        console.error(err);
+        res.status(500).json({ error: 'Internal server error' });
+      });
   });
 
-///// CREATE NEW COMMMENT////////IN PROGRES////////
+
+
+
+///// USER CREATE NEW COMMMENT////////////////
 router.post("/comment", isLoggedIn, (req, res, next) => {
 
   const { content } = req.body;

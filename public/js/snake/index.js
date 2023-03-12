@@ -461,30 +461,34 @@ reloadButton.addEventListener("click", refreshPage);
 // création d'une constante our exporter le score. dans cette constante on intègre un objet dont une fonction savescore
 // et une méthode post qui va publier le score sous format JSON
 // attention bien intégrer l' ctivation de la fonction quand game is over
-let scoreSent = false;
 
+let scoreSent = false;
 const Score = {
   saveScore: function (score) {
-    if (!scoreSent) {
-      fetch("http://localhost:3000/snake", {
-        method: "POST",
-        credentials: "same-origin",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ score }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-         // console.log("Score inserted!:", data);
-          // Définition de la variable globale sur true
-          scoreSent = true;
+    if (score >= 2) {
+      if (!scoreSent) {
+        fetch("http://localhost:3000/snake", {
+          method: "POST",
+          credentials: "same-origin",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ score }),
         })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
+          .then((response) => response.json())
+          .then((data) => {
+            // console.log("Score inserted!:", data);
+            // Définition de la variable globale sur true
+            scoreSent = true;
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
     }
   },
 };
+
+module.exports = Score;
 
 module.exports = Score;
