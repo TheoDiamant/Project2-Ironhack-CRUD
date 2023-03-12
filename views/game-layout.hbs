@@ -38,7 +38,22 @@
     <button type="submit">Post</button>
 </form>
 {{/if}}
-   </body>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Tout les commentaires</th>
+    </tr>
+  </thead>
+  <tbody>
+   {{#each comments}}
+      <tr>
+        <td>{{this.content}}</td>
+      </tr>
+  {{/each}}
+  </tbody>
+</table>
 
    <script>
       // sélectionnez le formulaire avec l'identifiant unique "comment-form"
@@ -65,5 +80,6 @@ commentForm.addEventListener("submit", (event) => {
     });
 });
    </script>
+   </body>
 
 </html>

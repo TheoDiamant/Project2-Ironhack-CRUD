@@ -37,13 +37,17 @@ router.get("/snake", isLoggedIn, (req, res, next) => {
     // Score.score = 100
     // Score.saveScore()
     // console.log(`${Score.score}`);
-    res.render("game/snake", {
-        userInSession: req.session.currentUser,
-        layout: "game-layout",
-        gameTitle: snakeConfig.gameTitle,
-        gameScriptPath: snakeConfig.gameScriptPath,
-        gameStylesheetPath: snakeConfig.gameStylesheetPath
-      });
+    Comment.find()
+    .then(comment => {
+        res.render("game/snake", {
+            userInSession: req.session.currentUser,
+            layout: "game-layout",
+            gameTitle: snakeConfig.gameTitle,
+            gameScriptPath: snakeConfig.gameScriptPath,
+            gameStylesheetPath: snakeConfig.gameStylesheetPath,
+            comments: comment
+          });
+    })
 });
 
 // création d'une route post pour récupérer le nouveau score du jeu
