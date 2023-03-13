@@ -5,6 +5,9 @@ const User = require("../../models/User.model");
 const Comment = require("../../models/Comment.model");
 const Score = require("../../models/Score.model");
 
+const Game = require("../../models/Game.model");
+
+
 const snakeConfig = require("../../public/snake-config");
 const mongoose = require("mongoose");
 
@@ -12,9 +15,15 @@ const { isLoggedIn, isLoggedOut } = require("../../middleware/route-guard.js");
 
 ////////:DISPLAY ALL GAMME PAGE///////////
 router.get("/games", isLoggedIn, (req, res, next) => {
-  res.render("game/all-game", {
-    layout: "loggedin-user",
-  });
+
+    Game.find()
+    .then(allGames => {
+        res.render("game/all-game", {
+          layout: "loggedin-user",
+          games: allGames
+        });
+    })
+
 });
 
 ////////:DISPLAY SINGLE GAMME PAGE///////////
@@ -33,22 +42,24 @@ router.get("/games", isLoggedIn, (req, res, next) => {
 //   res.send(`${score}`);
 // });
 
-router.get("/snake", isLoggedIn, (req, res, next) => {
+router.get("/games/:id", isLoggedIn, (req, res, next) => {
     // Score.score = 100
     // Score.saveScore()
     // console.log(`${Score.score}`);
-    Comment.find()
-    .then(comment => {
-        res.render("game/snake", {
-            userInSession: req.session.currentUser,
-            layout: "game-layout",
-            gameTitle: snakeConfig.gameTitle,
-            gameScriptPath: snakeConfig.gameScriptPath,
-            gameStylesheetPath: snakeConfig.gameStylesheetPath,
-            comments: comment
-          });
-    })
+    
+   const { id } = req.params
+
+   Game.findById(id)
+   .then(game => {
+    console.log(game)
+    res.render("game/snake", {
+        userInSession: req.session.currentUser,
+        layout: "game-layout",
+        games: game
+      });
+   })
 });
+
 
 // création d'une route post pour récupérer le nouveau score du jeu
 router.post("/snake", isLoggedIn, (req, res, next) => {

@@ -129,7 +129,7 @@ const myGameArea = {
     }
   },
 
-
+ 
   updateGameOver: function () {
     for (let i = 1; i < myGameArea.snake.length; i++) {
       if (
@@ -466,7 +466,7 @@ reloadButton.addEventListener("click", refreshPage);
 let scoreSent = false;
 const Score = {
   saveScore: function (score) {
-    if (score >= 2) {
+{
       if (!scoreSent) {
         fetch("http://localhost:3000/snake", {
           method: "POST",
@@ -492,4 +492,4 @@ const Score = {
 
 module.exports = Score;
 
-module.exports = Score;
+

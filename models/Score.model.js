@@ -2,7 +2,8 @@ const { Schema, model } = require("mongoose")
 
 const scoreSchema = (
     {
-        score: Number
+        score: Number,
+        gameName: String
     }
 )
 

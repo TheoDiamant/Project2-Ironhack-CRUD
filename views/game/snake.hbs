@@ -1,6 +1,8 @@
+{{#with games}}
 <div id="snake">
   <div class="game-intro">
-    <img src="./images/Logo.png" alt="Logo {{gameTitle}}" class="logo-img" />
+    <h1>{{this.name}}</h1>
+    <img src="{{this.logo}}" alt="Logo {{gameTitle}}" class="logo-img" />
       <br />
       <button id="start-button">Start your 3310!</button>
       <button id="reload-button">Reload the game</button>
@@ -11,7 +13,7 @@
     <div id="game-board">
       <img
         id="phone3310"
-        src="./images/phone 3310.webp"
+        src="{{this.img1}}"
         alt="3310"
         class="logo-img"
       />
@@ -24,6 +26,7 @@
     <a href="/">Next game</a>
 </div>
       
+<script src="{{this.jsFile}}"></script>
+<link rel="stylesheet" href="{{this.cssFile}}" />
 
-<script src="{{gameScriptPath}}"></script>
-<link rel="stylesheet" href="{{gameStylesheetPath}}" />
+{{/with}}
