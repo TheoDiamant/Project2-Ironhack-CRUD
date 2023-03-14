@@ -1,0 +1,96 @@
+@font-face {
+  font-family: 'pacman';
+  src: url('/stylesheets/fontpacman/pacman.ttf');
+}
+body {
+  font-family: 'pacman';
+  padding: 0;
+  text-align: center;
+  background-color: black;
+}
+
+canvas {
+  position: relative;
+  background-color: black;
+  border: 1px solid blue;
+}
+
+#arcade {
+  position: absolute;
+  z-index: 2;
+  width: 1000px;
+}
+
+#play {
+  padding: 0;
+  border: none;
+  background: none;
+  color: yellow;
+  font-family: 'pacman';
+  font-size: 50px;
+  position: absolute;
+  right: 150px;
+  top: 110px;
+}
+#game-over,
+#pause-game,
+#winner {
+  position: absolute;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  top: 24%;
+  left: 33%;
+  text-align: center;
+  padding-left: 50px;
+  padding-right: 50px;
+  color: yellow;
+}
+
+#main-menu {
+  position: absolute;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  top: 24%;
+  left: 32%;
+  text-align: center;
+  padding-left: 50px;
+  padding-right: 50px;
+  color: yellow;
+  font-family: 'pacman';
+}
+
+.pacman {
+  position: absolute;
+  top: -140px;
+  right: 88px;
+  font-size: 55px;
+}
+
+
+#game-over, #pause-game, #winner{
+  display: none;
+}
+
+#restart-game-over{
+  padding: 0;
+  border: none;
+  background: none;
+  color: yellow;
+  font-family: 'pacman';
+  font-size: 30px;
+  position: absolute;
+  transform: translateX(-50%);
+  top: 100px;
+  left: 50%;
+}
+
+#pause{
+  position: absolute;
+  bottom: -50px;
+  left: 60%;
+  transform: translateX(-50%);
+}

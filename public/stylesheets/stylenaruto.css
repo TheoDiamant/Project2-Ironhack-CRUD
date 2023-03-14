@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Rowdies', sans-serif;
+}
+
+:root {
+  --orange-color: #e14f35;
+  --dark-blue: #143966;
+  --white: #ffffff;
+  --black: #000000;
+}
+
+body {
+  height: 100vh;
+  background: no-repeat url(/images/naruto-images/bg.png);
+  background-size: cover;
+}
+
+h1 {
+  text-transform: uppercase;
+  color: var(--orange-color);
+  font-size: 42px;
+}
+
+p {
+  font-size: 24px;
+  padding: 20px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+span {
+  color: var(--orange-color);
+}
+
+img {
+  width: 380px;
+  height: 290px;
+}
+
+canvas {
+  background-color: cyan;
+  background: url('./img/bg.png') no-repeat;
+  background-size: cover;
+  cursor: none;
+}
+
+#start-game,
+#game-over {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#game-over,
+canvas {
+  display: none;
+}
+
+#score {
+  background-color: transparent;
+  position: absolute;
+}
+
+.start-button,
+.restart-button {
+  margin: 30px 0;
+  padding: 20px 100px;
+  background-color: var(--orange-color);
+  border-radius: 3px;
+  color: var(--white);
+  border: none;
+  text-transform: uppercase;
+  font-size: 24px;
+  box-shadow: 0px 3px 5px #888888c7;
+  letter-spacing: 0.5rem;
+  cursor: pointer;
+}
+
+.start-button:hover,
+.restart-button:hover {
+  background-color: var(--dark-blue);
+  color: var(--white);
+  transition: 0.3s;
+}
+
+.paragraph {
+  background-color: var(--white);
+}

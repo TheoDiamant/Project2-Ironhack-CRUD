@@ -1,13 +1,15 @@
 /* body {
     padding: 0;
   } */
-  #snake .game-intro {
+.game-intro {
     display: flex;
     flex-direction: column;
     text-align: center;
+    margin-top: 579px;
     float: left;
     padding: 1.5% 10%;
     align-items: center;
+    
   }
   
   .game-intro p {
@@ -99,8 +101,9 @@
     position: relative;
     border: 0px solid greenyellow;
     z-index: 1;
-    padding-left: 108px;
+    left: -657px;
     padding-top: 85px;
+    width: 730px;
   }
   
   #phone3310 {

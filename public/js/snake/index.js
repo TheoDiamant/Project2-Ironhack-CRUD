@@ -466,28 +466,26 @@ reloadButton.addEventListener("click", refreshPage);
 let scoreSent = false;
 const Score = {
   saveScore: function (score) {
-{
-      if (!scoreSent) {
-        fetch("http://localhost:3000/snake", {
-          method: "POST",
-          credentials: "same-origin",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ score }),
+    if (!scoreSent) {
+      fetch("http://localhost:3000/snake", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ score }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // console.log("Score inserted!:", data);
+          // Définition de la variable globale sur true
+          scoreSent = true;
         })
-          .then((response) => response.json())
-          .then((data) => {
-            // console.log("Score inserted!:", data);
-            // Définition de la variable globale sur true
-            scoreSent = true;
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-      }
+        .catch((error) => {
+          console.error("Error:", error);
+        });
     }
-  },
+  }
 };
 
 module.exports = Score;

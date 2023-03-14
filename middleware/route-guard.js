@@ -1,3 +1,5 @@
+const Game = require("../models/Game.model");
+
 const isLoggedIn = (req, res, next) => {
     if (!req.session.currentUser) {
       return res.redirect('/login');
@@ -13,8 +15,33 @@ const isLoggedIn = (req, res, next) => {
     }
     next();
   };
+
+  const checkSnakeScore = (req, res, next) => {
+    const user = req.session.currentUser._id
+
+    Game.findOne({ name: "Snake", "score.user": user })
+    .then(snakeGame => {
+      if (!snakeGame) {
+        
+        res.redirect("/snake"); 
+      } else {
+        const snakeScore = snakeGame.score.find(s => s.user.toString() === user.toString());
+        if (snakeScore.score >= 5) {
+          next(); 
+        } else {
+          res.redirect("/snake"); 
+        }
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).send("Erreur serveur");
+    });
+}
+
    
   module.exports = {
     isLoggedIn,
-    isLoggedOut
+    isLoggedOut,
+    checkSnakeScore
   };

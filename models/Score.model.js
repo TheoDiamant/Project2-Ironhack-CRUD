@@ -2,8 +2,9 @@ const { Schema, model } = require("mongoose")
 
 const scoreSchema = (
     {
-        score: Number,
-        gameName: String
+         score: Number,
+        game: { type: Schema.Types.ObjectId, ref: "Game" },
+        user: { type: Schema.Types.ObjectId, ref: "User" }
     }
 )
 

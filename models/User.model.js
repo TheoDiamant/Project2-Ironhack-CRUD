@@ -22,7 +22,7 @@ const userSchema = new Schema(
       required: true
     },
     
-    score: { type: Schema.Types.ObjectId, ref: "Score" },
+    score: [{ type: Schema.Types.ObjectId, ref: "Score" }],
     
     comments: [
        { type: Schema.Types.ObjectId, ref: "Comment" }
