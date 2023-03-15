@@ -3,6 +3,26 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+#game-test {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#canvas-side {
+  width: 50%;
+  height: 600px;
+}
+
+#comment-side {
+  width: 25%;
+  height: 50%;
+}
+
+#game-description{
+  background-color: rgb(0, 255, 89);
+}
+
 a {
   color: #00b7ff;
   text-decoration: none;

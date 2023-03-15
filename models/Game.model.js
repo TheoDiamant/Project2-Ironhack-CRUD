@@ -5,6 +5,12 @@ const gameSchema = (
         name: {
             type: String,
         },
+        description: {
+            type: String,
+        },
+        instructions: {
+            type: String,
+        },
         jsFile: {
           type: String,
         },

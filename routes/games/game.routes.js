@@ -9,20 +9,21 @@ const Game = require("../../models/Game.model");
 
 const mongoose = require("mongoose");
 
-const { isLoggedIn, isLoggedOut, checkSnakeScore } = require("../../middleware/route-guard.js");
+const {
+  isLoggedIn,
+  isLoggedOut,
+  checkSnakeScore,
+} = require("../../middleware/route-guard.js");
 const { populate } = require("../../models/User.model");
 
 ////////:DISPLAY ALL GAMME PAGE///////////
 router.get("/games", isLoggedIn, (req, res, next) => {
-
-    Game.find()
-    .then(allGames => {
-        res.render("game/all-game", {
-          layout: "loggedin-user",
-          games: allGames
-        });
-    })
-
+  Game.find().then((allGames) => {
+    res.render("game/all-game", {
+      layout: "loggedin-user",
+      games: allGames,
+    });
+  });
 });
 
 /*
@@ -64,15 +65,22 @@ router.get('/game/:id', isLoggedIn, (req, res, next) => {
 
 */
 
-
-router.get('/game/:id', isLoggedIn, (req, res, next) => {
+router.get("/game/:id", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
   Game.findById(id)
-    .then(game => {
+    .then((game) => {
+      const mainContent = `
+        <main>
+            <h1>${game.name}</h1>
+            <p>${game.description}</p>
+            <p>${game.instructions}</p>
+        </main>
+      `;
       res.render(`game/${game.template}`, {
         userInSession: req.session.currentUser,
-        layout: 'game-layout',
+        layout: "game-layout",
         game: game,
+        main: mainContent,
       });
     })
     .catch(err => next(err));
@@ -96,7 +104,6 @@ router.get('/game/:id', isLoggedIn, (req, res, next) => {
       console.log(teub)
     })
 });
-
 
 // création d'une route post pour récupérer le nouveau score du jeu
 router.post("/scores", isLoggedIn, async (req, res, next) => {
@@ -124,7 +131,7 @@ router.post("/scores", isLoggedIn, async (req, res, next) => {
     res.json(response);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
@@ -136,24 +143,24 @@ router.get("/test", (req, res, next) => {
 
 ///// USER CREATE NEW COMMMENT////////////////
 router.post("/comment", isLoggedIn, (req, res, next) => {
-    const { content } = req.body;
-  
-    Comment.create({ content })
-      .then(newComment => {
-        return User.findByIdAndUpdate(
-          req.session.currentUser._id, 
-          { $push: { comments: newComment._id } },
-          { new: true }
-        );
-      })
-      .then(() => {
-        const response = { message: 'Comment posted successfully' };
-        res.status(200).json(response);
-      })
-      .catch(err => {
-        console.error(err);
-        res.status(500).json({ error: 'Internal server error' });
-      });
-  });
+  const { content } = req.body;
 
-module.exports = router
+  Comment.create({ content })
+    .then((newComment) => {
+      return User.findByIdAndUpdate(
+        req.session.currentUser._id,
+        { $push: { comments: newComment._id } },
+        { new: true }
+      );
+    })
+    .then(() => {
+      const response = { message: "Comment posted successfully" };
+      res.status(200).json(response);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: "Internal server error" });
+    });
+});
+
+module.exports = router;
