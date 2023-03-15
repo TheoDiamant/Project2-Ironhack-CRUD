@@ -20,13 +20,15 @@ const pacman = [
     {
     name: "Naruto", 
     template: "naruto.hbs",
+    description: "Help him eat as much Ramen as he can!",
+    instructions: "Use the MOUSE MOVEMENT to pick up ONLY RAMEN and feed Naruto!",
 }
 ]
 
 
 
 
-const MONGO_URI = process.env.MONGODB_URI || "mongodb://localhost/CRUDProject";
+const MONGO_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1/CRUDProject";
 
 mongoose
 .connect(MONGO_URI)

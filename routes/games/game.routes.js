@@ -9,20 +9,21 @@ const Game = require("../../models/Game.model");
 
 const mongoose = require("mongoose");
 
-const { isLoggedIn, isLoggedOut, checkSnakeScore } = require("../../middleware/route-guard.js");
+const {
+  isLoggedIn,
+  isLoggedOut,
+  checkSnakeScore,
+} = require("../../middleware/route-guard.js");
 const { populate } = require("../../models/User.model");
 
 ////////:DISPLAY ALL GAMME PAGE///////////
 router.get("/games", isLoggedIn, (req, res, next) => {
-
-    Game.find()
-    .then(allGames => {
-        res.render("game/all-game", {
-          layout: "loggedin-user",
-          games: allGames
-        });
-    })
-
+  Game.find().then((allGames) => {
+    res.render("game/all-game", {
+      layout: "loggedin-user",
+      games: allGames,
+    });
+  });
 });
 
 /*
@@ -64,24 +65,29 @@ router.get('/game/:id', isLoggedIn, (req, res, next) => {
 
 */
 
-
-router.get('/game/:id', isLoggedIn, (req, res, next) => {
+router.get("/game/:id", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
   Game.findById(id)
-    .then(game => {
+    .then((game) => {
+      const mainContent = `
+        <main>
+            <h1>${game.name}</h1>
+            <p>${game.description}</p>
+            <p>${game.instructions}</p>
+        </main>
+      `;
       res.render(`game/${game.template}`, {
         userInSession: req.session.currentUser,
-        layout: 'game-layout',
+        layout: "game-layout",
         game: game,
+        main: mainContent,
       });
     })
-    .catch(err => next(err));
+    .catch((err) => next(err));
 });
-
 
 // création d'une route post pour récupérer le nouveau score du jeu
 router.post("/snake", isLoggedIn, async (req, res, next) => {
-
   try {
     const { score } = req.body;
 
@@ -89,12 +95,16 @@ router.post("/snake", isLoggedIn, async (req, res, next) => {
     const user = await User.findById(req.session.currentUser._id);
 
     // Trouver le jeu actuel dans la base de données
-    const snake = await Game.findOne({name: "Snake"})
+    const snake = await Game.findOne({ name: "Snake" });
 
-    const naruto = await Game.findOne({name: "Naruto"})
+    const naruto = await Game.findOne({ name: "Naruto" });
 
     // Créer un nouveau score
-    const userScore = await Score.create({ score, user: user._id, game: naruto._id });
+    const userScore = await Score.create({
+      score,
+      user: user._id,
+      game: naruto._id,
+    });
 
     // Ajouter le nouveau score au jeu correspondant
     snake.score.push(userScore);
@@ -102,7 +112,6 @@ router.post("/snake", isLoggedIn, async (req, res, next) => {
 
     naruto.score.push(userScore);
     await naruto.save();
-
 
     // Ajouter le nouveau score à l'utilisateur
     user.score.push(userScore);
@@ -112,34 +121,35 @@ router.post("/snake", isLoggedIn, async (req, res, next) => {
     res.json(response);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: "Internal server error" });
   }
+});
 
-  });
-
-
-
+//création d'une route test pour layout du jeu
+router.get("/test", (req, res, next) => {
+  res.render("game-layout");
+});
 
 ///// USER CREATE NEW COMMMENT////////////////
 router.post("/comment", isLoggedIn, (req, res, next) => {
-    const { content } = req.body;
-  
-    Comment.create({ content })
-      .then(newComment => {
-        return User.findByIdAndUpdate(
-          req.session.currentUser._id, 
-          { $push: { comments: newComment._id } },
-          { new: true }
-        );
-      })
-      .then(() => {
-        const response = { message: 'Comment posted successfully' };
-        res.status(200).json(response);
-      })
-      .catch(err => {
-        console.error(err);
-        res.status(500).json({ error: 'Internal server error' });
-      });
-  });
+  const { content } = req.body;
 
-module.exports = router
+  Comment.create({ content })
+    .then((newComment) => {
+      return User.findByIdAndUpdate(
+        req.session.currentUser._id,
+        { $push: { comments: newComment._id } },
+        { new: true }
+      );
+    })
+    .then(() => {
+      const response = { message: "Comment posted successfully" };
+      res.status(200).json(response);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: "Internal server error" });
+    });
+});
+
+module.exports = router;

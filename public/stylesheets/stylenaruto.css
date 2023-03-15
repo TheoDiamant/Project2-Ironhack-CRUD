@@ -2,7 +2,19 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Rowdies', sans-serif;
+  font-family: "Rowdies", sans-serif;
+}
+
+#all-game {
+  display: flex;
+}
+
+#left-side {
+  width: 50%;
+}
+
+#right-side {
+  width: 50%;
 }
 
 :root {
@@ -14,7 +26,7 @@
 
 body {
   height: 100vh;
-  background: no-repeat url(/images/naruto-images/bg.png);
+  /* background: no-repeat url(/images/naruto-images/bg.png); */
   background-size: cover;
 }
 
@@ -42,14 +54,18 @@ img {
 
 canvas {
   background-color: cyan;
-  background: url('./img/bg.png') no-repeat;
-  background-size: cover;
+  background: url("/images/naruto-images/bg.png") no-repeat;
+  /* background-size: cover; */
+  width: 100%;
+  height: 100%;
   cursor: none;
 }
 
 #start-game,
 #game-over {
   height: 100%;
+  padding-left: 0 !important;
+  background-color: none !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
