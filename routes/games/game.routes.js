@@ -27,15 +27,16 @@ router.get("/games", isLoggedIn, (req, res, next) => {
 });
 
 /*
+
 router.get('/game/:id', isLoggedIn, (req, res, next) => {
   const { id } = req.params;
-  const userId = req.session.currentUser._id;
+
 
   Game.findById(id)
     .then(game => {
       // Vérifiez si c'est le jeu Naruto et si l'utilisateur a fait au moins 5 points dans le jeu Snake
-      if (game.template === 'naruto') {
-        User.findOne({ _id: userId })
+      if (game.name === 'Naruto') {
+        User.findOne({ _id: req.session.currentUser._id })
           .populate('score')
           .then(user => {
             const snakeScore = user.score.find(score => score.game.template === 'snake');
@@ -62,8 +63,9 @@ router.get('/game/:id', isLoggedIn, (req, res, next) => {
     })
     .catch(err => next(err));
 });
-
 */
+
+
 
 router.get("/game/:id", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
@@ -98,7 +100,7 @@ router.get("/game/:id", isLoggedIn, (req, res, next) => {
       console.log(teub)
     })
 
-    User.findOne({username: "testfinal" })
+    User.findOne({username: "testjeu12" })
     .populate("score")
     .then(teub => {
       console.log(teub)
