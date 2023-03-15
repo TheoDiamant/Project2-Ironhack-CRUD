@@ -76,33 +76,45 @@ router.get('/game/:id', isLoggedIn, (req, res, next) => {
       });
     })
     .catch(err => next(err));
+
+
+    Game.findOne({name: "Naruto"})
+    .populate("score")
+    .then(teub => {
+      console.log(teub)
+    })
+
+    Game.findOne({name: "Snake"})
+    .populate("score")
+    .then(teub => {
+      console.log(teub)
+    })
+
+    User.findOne({username: "testfinal" })
+    .populate("score")
+    .then(teub => {
+      console.log(teub)
+    })
 });
 
 
 // création d'une route post pour récupérer le nouveau score du jeu
-router.post("/snake", isLoggedIn, async (req, res, next) => {
-
+router.post("/scores", isLoggedIn, async (req, res, next) => {
   try {
-    const { score } = req.body;
+    const { score, game } = req.body;
 
     // Trouver l'utilisateur actuel dans la base de données
     const user = await User.findById(req.session.currentUser._id);
 
-    // Trouver le jeu actuel dans la base de données
-    const snake = await Game.findOne({name: "Snake"})
-
-    const naruto = await Game.findOne({name: "Naruto"})
+    // Trouver le jeu correspondant dans la base de données
+    const gameObj = await Game.findOne({ name: game });
 
     // Créer un nouveau score
-    const userScore = await Score.create({ score, user: user._id, game: naruto._id });
+    const userScore = await Score.create({ score, user: user._id, game: gameObj._id });
 
     // Ajouter le nouveau score au jeu correspondant
-    snake.score.push(userScore);
-    await snake.save();
-
-    naruto.score.push(userScore);
-    await naruto.save();
-
+    gameObj.score.push(userScore);
+    await gameObj.save();
 
     // Ajouter le nouveau score à l'utilisateur
     user.score.push(userScore);
@@ -114,9 +126,11 @@ router.post("/snake", isLoggedIn, async (req, res, next) => {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });
   }
+});
 
-  });
-
+router.get("/test", (req, res, next) => {
+  res.render("game-layout")
+})
 
 
 

@@ -465,15 +465,15 @@ reloadButton.addEventListener("click", refreshPage);
 
 let scoreSent = false;
 const Score = {
-  saveScore: function (score) {
+  saveScore: function (score, game) {
     if (!scoreSent) {
-      fetch("http://localhost:3000/snake", {
+      fetch("http://localhost:3000/scores", {
         method: "POST",
         credentials: "same-origin",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ score }),
+        body: JSON.stringify({ score, game: "Snake" }),
       })
         .then((response) => response.json())
         .then((data) => {

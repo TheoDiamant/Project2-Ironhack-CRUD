@@ -52,7 +52,7 @@ class FallingElement extends Shape {
 
           const totalPoints = document.querySelector('#points');
           totalPoints.innerHTML = FallingElement.points;
-          
+
           // Save the score if it's greater than 0
     if (FallingElement.points > 0) {
       Score.saveScore(FallingElement.points);
@@ -90,21 +90,21 @@ class FallingElement extends Shape {
 
 }
 
-const scoreSent = false;
+let scoreSent = false;
 const Score = {
-  saveScore: function (score) {
+  saveScore: function (score, game) {
     if (!scoreSent) {
-      fetch("http://localhost:3000/snake", {
+      fetch("http://localhost:3000/scores", {
         method: "POST",
         credentials: "same-origin",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ score }),
+        body: JSON.stringify({ score, game: "Naruto" }),
       })
         .then((response) => response.json())
         .then((data) => {
-           console.log("Score inserted!:", data);
+          // console.log("Score inserted!:", data);
           // Définition de la variable globale sur true
           scoreSent = true;
         })
