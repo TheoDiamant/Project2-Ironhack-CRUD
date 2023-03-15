@@ -85,30 +85,11 @@ router.get("/game/:id", isLoggedIn, (req, res, next) => {
         main: mainContent,
       });
     })
-    .catch(err => next(err));
-
-
-    Game.findOne({name: "Naruto"})
-    .populate("score")
-    .then(teub => {
-      console.log(teub)
-    })
-
-    Game.findOne({name: "Snake"})
-    .populate("score")
-    .then(teub => {
-      console.log(teub)
-    })
-
-    User.findOne({username: "testjeu12" })
-    .populate("score")
-    .then(teub => {
-      console.log(teub)
-    })
+    .catch((err) => next(err));
 });
 
 // création d'une route post pour récupérer le nouveau score du jeu
-router.post("/scores", isLoggedIn, async (req, res, next) => {
+router.post("/snake", isLoggedIn, async (req, res, next) => {
   try {
     const { score, game } = req.body;
 
