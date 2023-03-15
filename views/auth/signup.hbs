@@ -1,20 +1,22 @@
-<div id="form">
-  <h2>Signup</h2>
+<div class="form" id="form">
+  <h2>Sign up</h2>
   <form action="/signup" method="POST">
  
-    <label> Username
-      <input type="text" name="username" placeholder="ironhacker" />
+    <label>
+      <input class="form-input" type="text" name="username" placeholder="Username" />
     </label>
  
-    <label> Email
-      <input type="email" name="email" placeholder="rockstar@ironhack.com" />
+    <label> 
+      <input class="form-input" type="email" name="email" placeholder="Email" />
     </label>
  
-    <label> Password
-      <input type="password" name="password" placeholder="********" />
+    <label> 
+      <input class="form-input" type="password" name="password" placeholder="Password" />
     </label>
  
-    <button type="submit">Create account</button>
+    <button class="submit-input" type="submit">Create account</button>
+
+    <a class="already" href="/login">Already have an account ?    <strong>Login</strong> </a>
  
       {{#if errorMessage}}
     <p class="error">{{errorMessage}}</p>

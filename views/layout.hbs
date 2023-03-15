@@ -6,28 +6,29 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>{{Title}}</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="/stylesheets/style.css" />
-      <link rel="stylesheet" href="/stylesheets/stylesnake.css" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
    </head>
 
    <body>
 
       
-   <nav>
+   <nav class="nav-bar">
       <ul>
          <li id="to-left">
-             <p><a href="/"> Users - demo </a></p>
+            <img src="/images/logojeux.png">
          </li>
          <li id="to-right">
-            <a href="/signup">Signup</a> <span> | </span>
-            <a href="/login">Login</a>
-          <form id="logout-form" action="/logout" method="POST">
-            <button>Logout</button>
-         </form>
-          <a href="/userProfile">Profile</a>
+             <a class="bubble-top" href="/games">Games</a>
+            <a class="bubble-top" href="/signup">Sign Up</a> <span> | </span>
+            <a class="bubble-top" href="/login">Login</a>
          </li>
       </ul>
    </nav>
+
+ 
 
 
       {{{body}}}

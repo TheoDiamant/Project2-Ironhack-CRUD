@@ -6,29 +6,36 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>{{appTitle}}</title>
-      <link rel="stylesheet" href="/stylesheets/style.css" />
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+         <link rel="stylesheet" href="/stylesheets/style.css" />
    </head>
 
    <body>
 
-     <nav>
-      <ul>
-         <li id="to-left">
-             <p><a href="/"> Name of the website </a></p>
-         </li>
-         <li id="to-right">
-             <a href="/games">Games</a>
-             <a href="/userProfile">Profile</a>
-          <form id="logout-form" action="/logout" method="POST">
-            <button>Logout</button>
-         </form>
-         </li>
-      </ul>
-   </nav>
+         <nav class="nav-bar">
+            <ul>
+               <li id="to-left">
+                  <img src="/images/logojeux.png">
+               </li>
+            <li id="middle" class="center-input">
+                  <input class="middle" placeholder="Rechercher un jeu">
+            </li>
+               <li id="to-right">
+                  <a class="bubble-top" href="/games">Games</a>
+                  <a class="bubble-top" href="/userProfile">Profile</a>
+               <form id="logout-form" action="/logout" method="POST">
+                  <button>Logout</button>
+               </form>
+               </li>
+            </ul>
+         </nav>
 
-        {{{body}}}
-        <script src="/js/script.js"></script>
+               {{{body}}}
+               <script src="/js/script.js"></script>
+               <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+               <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+               <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     </body>
 
 
-    </html>
+</html>
