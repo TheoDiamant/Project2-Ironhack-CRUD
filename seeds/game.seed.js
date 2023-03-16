@@ -35,7 +35,7 @@ mongoose
 .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
 
-    Game.create(pacman)
+    Game.create(game)
         .then(data => {
 
             console.log(`${data.length} games inserted.`)

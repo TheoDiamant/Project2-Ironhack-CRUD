@@ -9,5 +9,9 @@
 {{/each}}
 
 {{#if message}}
-    <p>{{message}}</p>
+    <script>
+        window.addEventListener('load', function () {
+            window.alert('{{message}}');
+        });
+    </script>
 {{/if}}
