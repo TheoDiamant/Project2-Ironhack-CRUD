@@ -59,6 +59,8 @@ canvas {
   width: 100%;
   height: 100%;
   cursor: none;
+  padding-left: 108px;
+  padding-top: 85px;
 }
 
 #start-game,
@@ -71,6 +73,8 @@ canvas {
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-left: 108px;
+  margin-top: 85px;
 }
 
 #game-over,

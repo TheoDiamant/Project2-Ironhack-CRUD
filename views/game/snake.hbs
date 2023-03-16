@@ -8,21 +8,20 @@
     <title>Snake 2 Raphaël Malet</title>
   </head>
   <body>
-    <div class="game-intro">
-      <img src="/images/Logo.png" alt="Logo Snake 2 3310" class="logo-img" />
-      <br />
-      <button id="start-button">Start your 3310!</button>
-      <button id="reload-button">Reload the game</button>
-      <p>Use arrows to control the Snake!</p>
-      <br />
-      <div class="arrow-8"></div>
-    </div>
     <div id="game-board">
      
       <div id="game-over">
         <h1>Game Over</h1>
       </div>
       <!-- <canvas id="canvas" width="500" height="700"></canvas> -->
+    </div>
+    <div class="game-intro">
+      {{!-- ajouter le logo du snake2 aux mêmes dimensions que le canvas et ajouter un onclick sur le bouton démarrer le jeu qui supprimera cette div --}}
+      <button id="start-button">Start your 3310!</button>
+      <button id="reload-button">Reload the game</button>
+      <p>Use arrows to control the Snake!</p>
+      <br />
+      <div class="arrow-8"></div>
     </div>
     <script src="/js/snake/index.js"></script>
   </body>

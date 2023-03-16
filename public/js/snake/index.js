@@ -12,8 +12,8 @@ const myGameArea = {
     let playerMovesUp = false;
     let playerMovesLeft = false;
     let playerMovesRight = false; // add the variables into the start function so that when we start all functions are back to false
-    this.canvas.width = 500;
-    this.canvas.height = 300;
+    this.canvas.width = 960;
+    this.canvas.height = 600;
     this.context = this.canvas.getContext("2d");
     const gameBoard = document.getElementById("game-board");
     gameBoard.appendChild(this.canvas);

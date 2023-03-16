@@ -1,7 +1,7 @@
 /* body {
     padding: 0;
   } */
-.game-intro {
+/* .game-intro {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -9,7 +9,11 @@
     float: left;
     padding: 1.5% 10%;
     align-items: center;
-    
+  } */
+  
+  .game-intro {
+    margin-top: -91px;
+    margin-left: 107px;
   }
   
   .game-intro p {
@@ -95,15 +99,14 @@
     float: left;
     padding: 20px 0px;
     position: relative;
+    bottom: 10vh;
   }
   
   canvas {
     position: relative;
-    border: 0px solid greenyellow;
     z-index: 1;
-    left: -657px;
-    padding-top: 85px;
-    width: 730px;
+    /* padding-top: 85px; */
+    width: 650px;
   }
   
   #phone3310 {
