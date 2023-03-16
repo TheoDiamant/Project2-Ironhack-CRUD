@@ -26,7 +26,7 @@ router.get("/games", isLoggedIn, (req, res, next) => {
   });
 });
 
-/*
+
 
 router.get('/game/:id', isLoggedIn, (req, res, next) => {
   const { id } = req.params;
@@ -34,15 +34,31 @@ router.get('/game/:id', isLoggedIn, (req, res, next) => {
 
   Game.findById(id)
     .then(game => {
+      
       // Vérifiez si c'est le jeu Naruto et si l'utilisateur a fait au moins 5 points dans le jeu Snake
       if (game.name === 'Naruto') {
+        console.log("THE GAME IS", game.name)
         User.findOne({ _id: req.session.currentUser._id })
-          .populate('score')
+        .populate({
+          path: 'score',
+          populate: {
+            path: 'game',
+            model: 'Game'
+          }
+        })
           .then(user => {
-            const snakeScore = user.score.find(score => score.game.template === 'snake');
-            if (!snakeScore || snakeScore.score < 5) {
+            console.log("The user usernmae is", user.username)
+            const snakeScores = user.score.filter(score => score.game.name === 'Snake').map(score => score.score);
+            const maxSnakeScore = Math.max(...snakeScores);
+            console.log("the biggest score is of the user is:", maxSnakeScore, "and all the scores of the user are", snakeScores)
+            if (!maxSnakeScore || maxSnakeScore < 5) {
               // Redirigez l'utilisateur vers une page d'erreur s'il n'a pas réussi à faire au moins 5 points dans le jeu Snake
-              res.render('error', { message: "You don't have enough points to play Naruto" });
+              res.render("game/all-game",
+              {
+                message: "You need to do 5 points in snake to play Naruto",
+                layout: "loggedin-user",
+              } 
+              )
             } else {
               res.render(`game/${game.template}`, {
                 userInSession: req.session.currentUser,
@@ -62,34 +78,41 @@ router.get('/game/:id', isLoggedIn, (req, res, next) => {
       }
     })
     .catch(err => next(err));
+    
+    User.findOne({username: "testfinal"})
+    .populate("score")
+    .then(db => {
+      console.log(db)
+    })
+
+ 
+  
 });
-*/
+  
 
 
 
+
+/*
 router.get("/game/:id", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
   Game.findById(id)
     .then((game) => {
-      const mainContent = `
-        <main>
-            <h1>${game.name}</h1>
-            <p>${game.description}</p>
-            <p>${game.instructions}</p>
-        </main>
-      `;
       res.render(`game/${game.template}`, {
         userInSession: req.session.currentUser,
         layout: "game-layout",
         game: game,
-        main: mainContent,
+      
       });
     })
     .catch((err) => next(err));
+
 });
+*/
+  
 
 // création d'une route post pour récupérer le nouveau score du jeu
-router.post("/snake", isLoggedIn, async (req, res, next) => {
+router.post("/scores", isLoggedIn, async (req, res, next) => {
   try {
     const { score, game } = req.body;
 

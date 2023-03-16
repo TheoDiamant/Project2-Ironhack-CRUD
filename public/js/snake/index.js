@@ -35,72 +35,72 @@ const myGameArea = {
       myGameArea.myInterval = setInterval(
         myGameArea.updateLinearMovement,
         10000 / 60
-      );
-    } else if (score === 10) {
-      clearInterval(myGameArea.myInterval);
-      myGameArea.myInterval = setInterval(
-        myGameArea.updateLinearMovement,
-        5000 / 60
-      );
-    }
-  },
-  updateGame: function () {
-    toBeUpdated = true;
-    if (toBeUpdated) {
-      if (!myGameArea.isGameOver) {
-        myGameArea.components.forEach((component) => {
-          component.render();
-        });
-        myGameArea.bonus.forEach((bonus1) => {
-          if (bonus1.checkEating(myGameArea.snake[0])) {
-            myGameArea.ateABonus = true;
-            score += 1; // create bonus give score 1
-            myGameArea.testInterval();
-            let indexBonus1 = myGameArea.bonus.indexOf(bonus1); //find the index of the bonus from the bonus array
-            myGameArea.bonus.splice(indexBonus1, 1); // remove this specific bonus using the index from the array
-          }
-          bonus1.render(); // if no collision, just render the bonus
-        });
-        myGameArea.joker.forEach((joker1) => {
-          if (joker1.checkEating(myGameArea.snake[0])) {
-            bonusToEat += 1; // create bonus give score 2
-            let indexJoker1 = myGameArea.joker.indexOf(joker1); //find the index of the bonus from the bonus array
-            myGameArea.joker.splice(indexJoker1, 1); // remove this specific bonus using the index from the array
-          }
-          joker1.render(); // if no collision, just render the joker
-        });
-
-        // Snake logic
-        // Snake rendering
-        myGameArea.snake.forEach((body) => {
-          body.render();
-        });
-
-        myGameArea.context.font = "20px Verdana";
-        myGameArea.context.fillStyle = "black";
-        myGameArea.context.fillText(
-          `Score: ${score}`,
-          myGameArea.canvas.width / 10,
-          40
         );
-
-        myGameArea.context.font = "20px Verdana";
-        myGameArea.context.fillStyle = "black";
-        myGameArea.context.fillText(
-          `Bonus: ${bonusToEat}`,
-          myGameArea.canvas.width - 160,
-          40
-        ); // display of score on top left
-      } else if (myGameArea.isGameOver) {
-        Score.saveScore(score); // active la fonction de sauvegarde du scote (mettre une boolean pour pas que ce soit envoyé 50 fois)
-        myGameArea.context.clearRect(
-          0,
-          0,
-          myGameArea.canvas.width,
-          myGameArea.canvas.height
-        );
-        myGameArea.context.fillStyle = "#96d202";
-        myGameArea.context.fillRect(
+      } else if (score === 10) {
+        clearInterval(myGameArea.myInterval);
+        myGameArea.myInterval = setInterval(
+          myGameArea.updateLinearMovement,
+          5000 / 60
+          );
+        }
+      },
+      updateGame: function () {
+        toBeUpdated = true;
+        if (toBeUpdated) {
+          if (!myGameArea.isGameOver) {
+            myGameArea.components.forEach((component) => {
+              component.render();
+            });
+            myGameArea.bonus.forEach((bonus1) => {
+              if (bonus1.checkEating(myGameArea.snake[0])) {
+                myGameArea.ateABonus = true;
+                score += 1; // create bonus give score 1
+                myGameArea.testInterval();
+                let indexBonus1 = myGameArea.bonus.indexOf(bonus1); //find the index of the bonus from the bonus array
+                myGameArea.bonus.splice(indexBonus1, 1); // remove this specific bonus using the index from the array
+              }
+              bonus1.render(); // if no collision, just render the bonus
+            });
+            myGameArea.joker.forEach((joker1) => {
+              if (joker1.checkEating(myGameArea.snake[0])) {
+                bonusToEat += 1; // create bonus give score 2
+                let indexJoker1 = myGameArea.joker.indexOf(joker1); //find the index of the bonus from the bonus array
+                myGameArea.joker.splice(indexJoker1, 1); // remove this specific bonus using the index from the array
+              }
+              joker1.render(); // if no collision, just render the joker
+            });
+            
+            // Snake logic
+            // Snake rendering
+            myGameArea.snake.forEach((body) => {
+              body.render();
+            });
+            
+            myGameArea.context.font = "20px Verdana";
+            myGameArea.context.fillStyle = "black";
+            myGameArea.context.fillText(
+              `Score: ${score}`,
+              myGameArea.canvas.width / 10,
+              40
+              );
+              
+              myGameArea.context.font = "20px Verdana";
+              myGameArea.context.fillStyle = "black";
+              myGameArea.context.fillText(
+                `Bonus: ${bonusToEat}`,
+                myGameArea.canvas.width - 160,
+                40
+                ); // display of score on top left
+              } else if (myGameArea.isGameOver) {
+                Score.saveScore(score); // active la fonction de sauvegarde du scote (mettre une boolean pour pas que ce soit envoyé 50 fois)
+                myGameArea.context.clearRect(
+                  0,
+                  0,
+                  myGameArea.canvas.width,
+                  myGameArea.canvas.height
+                  );
+                  myGameArea.context.fillStyle = "#96d202";
+                  myGameArea.context.fillRect(
           0,
           0,
           myGameArea.canvas.width,
@@ -123,6 +123,7 @@ const myGameArea = {
           myGameArea.canvas.width / 2,
           myGameArea.canvas.height / 2 + 30
         );
+        
       }
     } else {
       toBeUpdated = false;
