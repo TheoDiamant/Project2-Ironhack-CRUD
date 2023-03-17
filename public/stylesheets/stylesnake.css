@@ -12,8 +12,15 @@
   } */
   
   .game-intro {
-    margin-top: -91px;
     margin-left: 107px;
+    top: 540px;
+    position: absolute;
+    margin-left: 107px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 26px;
+    margin-left: 50px;
   }
   
   .game-intro p {
@@ -27,6 +34,21 @@
   
   .arrows-img {
     width: 150px;
+  }
+
+  #contour {
+    margin-left: 418px;
+  }
+
+  .contour {
+    background-color: red;
+    border: 5px solid red;
+    height: 420px;
+    width: 661px;
+    padding-top: -9px;
+    /* padding-bottom: 12px; */
+    margin-top: 18px;
+    box-shadow: 8px 8px 10px 0 rgb(246 13 13 / 50%);
   }
   
   #start-button {
@@ -105,7 +127,7 @@
   canvas {
     position: relative;
     z-index: 1;
-    /* padding-top: 85px; */
+    padding-top: 85px;
     width: 650px;
   }
   

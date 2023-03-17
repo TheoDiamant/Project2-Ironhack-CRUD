@@ -177,35 +177,88 @@ form button:hover {
   width: 100%;
 }
 
-ul {
-  
-  height: 30px;
-  padding: 3em 0;
-  list-style-type: none;
+
+/* NAV BAR */
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+  background-color:rgb(26, 27, 40);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0 20px;
 }
 
-ul li {
-  line-height: 20px;
+.logo img {
+  height: 200px;
+  width: 200px;
+  margin-top: 20px;
 }
 
-#to-right {
-  margin-right: 10px;
-  float: right;
-  margin-top: 0px;
+.search {
+  flex: 1;
+  margin: 0 20px;
+  display: flex;
+  justify-content: space-evenly;
 }
-#to-right .bubble-top {
-  border: 1px solid black;
+
+.search input[type="text"] {
+  width: 60%;
+  padding: 8px;
   border-radius: 10px;
-  margin: 10px;
-  padding: 10px 40px;
-  background-color:  rgb(164, 142, 255);
-  color: white !important;
-  font-size: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border: none;
+  background-color: rgb(40, 41, 61);;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
 }
 
+.buttons{
+  margin-top: 14px;
+  
+}
 
+.buttons a {
+  margin-left: 10px;
+  text-decoration: none;
+  padding: 10px 40px;
+  border-radius: 10px;
+  background-color: rgb(164, 142, 255);;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+}
 
+.buttons a:hover {
+  background-color: #ddd;
+}
+
+.buttons button {
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #eee;
+  color: #333;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.buttons button:hover {
+  background-color: #ddd;
+}
+
+#logout-form button {
+  width: 120px;
+  height: 41px;
+  margin-left: 10px;
+  text-decoration: none;
+  border-radius: 10px;
+  background-color: rgb(225, 17, 17);;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  
+}
+/* END OF NAV BAR */
 h2 {
   color: rgb(164, 142, 255);
 }
@@ -218,29 +271,12 @@ h2 {
   font-size: 35px;
 }
 
-#to-left {
-  float: left;
-  margin-top: -70px;
-}
 
-#to-left img {
-  width: 200px;
-  height: 200px;
-}
-
-#to-left p a {
-  color: rgb(164, 142, 255);
-  font-weight: bold;
-  font-size: 2em;
-}
 
 #logout-form {
   display: inline;
 }
 
-#logout-form button {
-  width: 120px;
-}
 
 .game-intro {
   display: flex;
@@ -342,10 +378,10 @@ h2 {
 
 canvas {
   position: relative;
-  border: 0px solid greenyellow;
-  z-index: 1;
-  padding-left: 108px;
-  padding-top: 85px;
+    border: 0px solid greenyellow;
+    z-index: 1;
+    padding-left: 7px;
+    padding-top: 85px;
 }
 
 #phone3310 {
