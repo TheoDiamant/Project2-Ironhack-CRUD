@@ -13,14 +13,16 @@
   
   .game-intro {
     margin-left: 107px;
-    top: 540px;
+    top: 419px;
     position: absolute;
-    margin-left: 107px;
+    /* margin-left: 107px; */
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: flex-start;
-    padding: 26px;
-    margin-left: 50px;
+    padding: 22px;
+    margin-left: -381px;
+    /* float: left; */
+    z-index: 1;
   }
   
   .game-intro p {
@@ -36,21 +38,40 @@
     width: 150px;
   }
 
+  .img-logo{
+    background-color: rgb(0, 70, 128);
+    height: 130px;
+  }
+
   #contour {
-    margin-left: 418px;
+    margin-left: 460px;
   }
 
   .contour {
-    background-color: red;
-    border: 5px solid red;
+    background-color: rgb(0, 0, 0);
+    border: 5px solid rgb(4, 4, 4);
     height: 420px;
     width: 661px;
     padding-top: -9px;
     /* padding-bottom: 12px; */
     margin-top: 18px;
-    box-shadow: 8px 8px 10px 0 rgb(246 13 13 / 50%);
+    box-shadow: 8px 8px 10px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  #side{
+    
   }
   
+  .side {
+    background-color: rgb(0, 0, 0);
+    border: 5px solid rgb(4, 4, 4);
+    box-shadow: 8px 8px 10px 0 rgba(0, 0, 0, 0.5);
+    height: 490px;
+    width: 250px;
+    margin-left: 98px;
+    position: absolute;
+    bottom: 386px;
+  }
   #start-button {
     width: 350px;
     font-size: 30px;
@@ -77,7 +98,7 @@
     height: 48px;
     justify-content: center;
     line-height: 24px;
-    max-width: 100%;
+    max-width: 66%;
     padding: 0 25px;
     position: relative;
     text-align: center;
@@ -127,8 +148,8 @@
   canvas {
     position: relative;
     z-index: 1;
-    padding-top: 85px;
-    width: 650px;
+    padding-top: 77px;
+    width: 662px;
   }
   
   #phone3310 {
@@ -168,7 +189,7 @@
     text-align: center;
     text-decoration: none #000000 solid;
     text-decoration-thickness: auto;
-    width: 100%;
+    width: 67%;
     max-width: 460px;
     position: relative;
     cursor: pointer;

@@ -24,6 +24,22 @@
   --black: #000000;
 }
 
+#contour {
+  margin-left: 460px;
+}
+
+.contour {
+  background-color: rgb(0, 0, 0);
+  border: 5px solid rgb(4, 4, 4);
+  height: 420px;
+  width: 661px;
+  padding-top: -9px;
+  /* padding-bottom: 12px; */
+  margin-top: 18px;
+  box-shadow: 8px 8px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+
 body {
   height: 100vh;
   /* background: no-repeat url(/images/naruto-images/bg.png); */
@@ -56,11 +72,10 @@ canvas {
   background-color: cyan;
   background: url("/images/naruto-images/bg.png") no-repeat;
   /* background-size: cover; */
-  width: 100%;
-  height: 100%;
-  cursor: none;
-  padding-left: 108px;
-  padding-top: 85px;
+  position: relative;
+  z-index: 1;
+  padding-top: 77px;
+  width: 662px;
 }
 
 #start-game,

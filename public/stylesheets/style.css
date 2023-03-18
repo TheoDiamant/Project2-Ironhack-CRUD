@@ -376,13 +376,7 @@ h2 {
   position: relative;
 }
 
-canvas {
-  position: relative;
-    border: 0px solid greenyellow;
-    z-index: 1;
-    padding-left: 7px;
-    padding-top: 85px;
-}
+
 
 #phone3310 {
   position: absolute;
