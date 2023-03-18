@@ -8,29 +8,46 @@
     <title>Snake 2 Raphaël Malet</title>
   </head>
   <body>
-    <div id="contour">
+  <div id="contour">
+    <div class="side">
+      <div class="img-logo">
+          LOGO
+      </div>
+      <div class="game-intro">
+        {{!-- ajouter le logo du snake2 aux mêmes dimensions que le canvas et ajouter un onclick sur le bouton démarrer le jeu qui supprimera cette div --}}
+        <button id="start-button">Start your 3310!</button>
+        <button id="reload-button">Reload the game</button>
+      </div>
+    </div>
     <div class="contour">
-    <div id="game-board">
-     
-      <div id="game-over">
-        <h1>Game Over</h1>
-      </div>
-      <!-- <canvas id="canvas" width="500" height="700"></canvas> -->
-    </div>
-    <div class="game-intro">
-      {{!-- ajouter le logo du snake2 aux mêmes dimensions que le canvas et ajouter un onclick sur le bouton démarrer le jeu qui supprimera cette div --}}
-      <button id="start-button">Start your 3310!</button>
-      <button id="reload-button">Reload the game</button>
-    </div>
-    </div>
-    </div>
-    <div id="side">
-      <div class="side">
-        <div class="img-logo">
-            LOGO
+      {{!-- <div id="side">
+      </div> --}}
+      <div id="game-board">
+        <div id="game-over">
+          <h1>Game Over</h1>
         </div>
+      <!-- <canvas id="canvas" width="500" height="700"></canvas> -->
       </div>
     </div>
+    <div id="comment">
+      {{!-- {{#if userInSession}} --}}
+      <form id="comment-form" action="/comment" method="post">
+      <div id="list-comments">
+          Comments from other players:
+          <div>
+          {{#each comments}}
+            {{this.content}}
+          from {{this.user}}
+          {{/each}}
+          </div>
+      </div>
+          <input type="text" name="content" placeholder="This game is great !" />
+          <button type="submit">Add a comment</button>
+      </form>
+      {{!-- {{/if}} --}}
+    </div>
+  </div>
+
     <script src="/js/snake/index.js"></script>
   </body>
 </html>

@@ -2,7 +2,9 @@ const { Schema, model } = require("mongoose");
 
 const commentSchema = new Schema(
   {
-    content: String
+    content: String,
+    game: { type: Schema.Types.ObjectId, ref: "Game" },
+    user: { type: Schema.Types.ObjectId, ref: "User" }
   },
   {
     timestamps: true

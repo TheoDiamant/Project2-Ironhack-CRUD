@@ -35,88 +35,61 @@ router.get("/game/:id", isLoggedIn, (req, res, next) => {
 
   Game.findById(id)
     .then((game) => {
-      const mainContent = `
-      <main>
-          <h1>${game.name}</h1>
-          <p>${game.description}</p>
-          <p>${game.instructions}</p>
-      </main>
-    `;
-      // Vérifiez si c'est le jeu Naruto et si l'utilisateur a fait au moins 5 points dans le jeu Snake
-      if (game.name === "Naruto") {
-        console.log("THE GAME IS", game.name);
-        User.findOne({ _id: req.session.currentUser._id })
-          .populate({
-            path: "score",
-            populate: {
-              path: "game",
-              model: "Game",
-            },
-          })
-          .then((user) => {
-            console.log("The user usernmae is", user.username);
-            const snakeScores = user.score
-              .filter((score) => score.game.name === "Snake")
-              .map((score) => score.score);
-            const maxSnakeScore = Math.max(...snakeScores);
-            console.log(
-              "the biggest score is of the user is:",
-              maxSnakeScore,
-              "and all the scores of the user are",
-              snakeScores
-            );
-            if (!maxSnakeScore || maxSnakeScore < 5) {
-              // Redirigez l'utilisateur vers une page d'erreur s'il n'a pas réussi à faire au moins 5 points dans le jeu Snake
-              req.flash(
-                "error",
-                "You need to do 5 points in snake to play Naruto"
-              );
-              res.redirect("/games");
-            } else {
-              res.render(`game/${game.template}`, {
-                userInSession: req.session.currentUser,
-                layout: "game-layout",
-                game: game,
-                main: mainContent,
-              });
-            }
-          })
-          .catch((err) => next(err));
-      } else {
-        // Pour les autres jeux, rendre simplement la vue du jeu
-        res.render(`game/${game.template}`, {
-          userInSession: req.session.currentUser,
-          layout: "game-layout",
-          game: game,
-          main: mainContent,
-        });
-      }
+      Comment.find()
+      .populate("user")
+        .then((allComments) => {
+          console.log(allComments)
+          // Vérifiez si c'est le jeu Naruto et si l'utilisateur a fait au moins 5 points dans le jeu Snake
+          if (game.name === "Naruto") {
+            console.log("THE GAME IS", game.name);
+            User.findOne({ _id: req.session.currentUser._id })
+              .populate({
+                path: "score",
+                populate: {
+                  path: "game",
+                  model: "Game",
+                },
+              })
+              .then((user) => {
+                console.log("The user username is", user.username);
+                const snakeScores = user.score
+                  .filter((score) => score.game.name === "Snake")
+                  .map((score) => score.score);
+                const maxSnakeScore = Math.max(...snakeScores);
+                console.log(
+                  "the biggest score is of the user is:",
+                  maxSnakeScore,
+                  "and all the scores of the user are",
+                  snakeScores
+                );
+                if (!maxSnakeScore || maxSnakeScore < 5) {
+                  // Redirigez l'utilisateur vers une page d'erreur s'il n'a pas réussi à faire au moins 5 points dans le jeu Snake
+                  req.flash(
+                    "error",
+                    "You need to do 5 points in snake to play Naruto"
+                  );
+                  res.redirect("/games");
+                } else {
+                  res.render(`game/${game.template}`, {
+                    userInSession: req.session.currentUser,
+                    layout: "game-layout",
+                    game: game,
+                  });
+                }
+              })
+              .catch((err) => next(err));
+          } else {
+            // Pour les autres jeux, rendre simplement la vue du jeu
+            res.render(`game/${game.template}`, {
+              userInSession: req.session.currentUser,
+              layout: "game-layout",
+              comments: allComments
+            });
+          }
+        })
     })
     .catch((err) => next(err));
-
-  User.findOne({ username: "testfinal" })
-    .populate("score")
-    .then((db) => {
-      console.log(db);
-    });
 });
-
-/*
-router.get("/game/:id", isLoggedIn, (req, res, next) => {
-  const { id } = req.params;
-  Game.findById(id)
-    .then((game) => {
-      res.render(`game/${game.template}`, {
-        userInSession: req.session.currentUser,
-        layout: "game-layout",
-        game: game,
-      
-      });
-    })
-    .catch((err) => next(err));
-
-});
-*/
 
 // création d'une route post pour récupérer le nouveau score du jeu
 router.post("/scores", isLoggedIn, async (req, res, next) => {
@@ -150,10 +123,6 @@ router.post("/scores", isLoggedIn, async (req, res, next) => {
     console.error(error);
     res.status(500).json({ error: "Internal server error" });
   }
-});
-
-router.get("/test", (req, res, next) => {
-  res.render("game-layout");
 });
 
 ///// USER CREATE NEW COMMMENT////////////////
