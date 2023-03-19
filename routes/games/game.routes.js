@@ -4,6 +4,7 @@ const router = new Router();
 const User = require("../../models/User.model");
 const Comment = require("../../models/Comment.model");
 const Score = require("../../models/Score.model");
+const Like = require("../../models/Like.model");
 
 const Game = require("../../models/Game.model");
 
@@ -151,4 +152,50 @@ router.post("/comment", isLoggedIn, (req, res, next) => {
     });
 });
 
+router.post("/like", isLoggedIn, async (req, res, next) => {
+  try {
+    const { like } = req.body;
+
+    // Trouver l'utilisateur actuel dans la base de données
+    const user = await User.findById(req.session.currentUser._id);
+
+    // Trouver le jeu correspondant dans la base de données
+    const gameObj = await Game.findOne({name: "Snake"});
+
+    // Créer un nouveau like
+    const userlike = await Score.create({
+      like,
+      user: user._id,
+      game: gameObj._id,
+    });
+
+    // Ajouter le nouveau score au jeu correspondant
+    gameObj.like.push(userlike);
+    await gameObj.save();
+
+    // Ajouter le nouveau like à l'utilisateur
+    user.like.push(userlike);
+    await user.save();
+
+    const response = { message: `Score set successfully ${like}` };
+    res.json(response);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+  
+  User.findOne({username: "testfinal"})
+  .populate("score")
+  .then(post => {
+    console.log(post)
+  })
+  
+  Game.findOne({name: "JetPackMan"})
+  .populate("score")
+  .then(post => {
+    console.log(post)
+  })
+});
+
 module.exports = router;
+

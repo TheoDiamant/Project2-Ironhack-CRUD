@@ -23,10 +23,8 @@ const userSchema = new Schema(
     },
     
     score: [{ type: Schema.Types.ObjectId, ref: "Score" }],
-    
-    comments: [
-       { type: Schema.Types.ObjectId, ref: "Comment" }
-      ]
+    like: [{ type: Schema.Types.ObjectId, ref: "Like" }],
+    comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }]
     
   },
   {

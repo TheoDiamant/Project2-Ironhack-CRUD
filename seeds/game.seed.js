@@ -1,31 +1,29 @@
 const Game = require("../models/Game.model")
 const mongoose = require("mongoose")
 
-const game = [
+const Snake = [
     {
     name: "Snake", 
-    jsFile: "/js/snake/index.js", 
-    cssFile: "/stylesheets/stylesnake.css", 
     template: "snake.hbs",
-    action1: "Start your 3310!",
-    action2: "Reload the game",
-    action3: "Use arrows to control the Snake!",
     logo: "/images/Logo.png",
-    img1: "/images/phone3310.webp",
-    img2: "/images/phone3310.webp",
 }
 ]
 
-const pacman = [
+const Naruto = [
     {
     name: "Naruto", 
     template: "naruto.hbs",
-    description: "Help him eat as much Ramen as he can!",
-    instructions: "Use the MOUSE MOVEMENT to pick up ONLY RAMEN and feed Naruto!",
-}
+    }
 ]
 
+const JetPackMan = [
+    {
+    name: "JetPackMan", 
+    template: "jetpackman.hbs",
+    logo: "/images/game_background_1.png",
+}
 
+]
 
 
 const MONGO_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1/CRUDProject";
@@ -35,7 +33,7 @@ mongoose
 .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
 
-    Game.create(game)
+    Game.create(JetPackMan)
         .then(data => {
 
             console.log(`${data.length} games inserted.`)

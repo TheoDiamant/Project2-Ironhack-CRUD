@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/stylejetpackman.css">
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+    <div  id="shop">
+        <div class="row">
+            <div class="block card">
+                <div id="pane">
+                    <div id="coiner" ></div>
+                   <h1> Jet Pack Man Shop</h1> <span id="coins"> Coins:</span>
+                </div>
+                <div id="pane">
+                    <div  id="coiner" class="two InsideContent" > </div>
+                    <div id="menu-item" class="InsideContent">  <img class="image" src="/images/jetpackman-images/jet_pack.png" width="50px" height="50px">   JetPack Level <span id="jlevel"> 0</span> <button onclick="upgradeJetPack()" id="upCostJet"> Upgrade </button></div> 
+                </div>
+                <div id="pane">
+                    <div  id="coiner" class="three InsideContent"></div>
+                    <div id="menu-item" class="InsideContent"> <img class="image" src="/images/jetpackman-images/head_white_helmet.png"  width="50px" height="50px"> Player health <span id="hlevel"> 0</span> <button onclick="upgradeHealth()" id="upCostHealth"> Upgrade </button></div> 
+                </div>
+                <div id="pane">
+                    <div  id="coiner" class="three InsideContent"></div>
+                    <div id="menu-item" class="InsideContent"> <img class="image" src="/images/jetpackman-images/gun.png"  width="50px" height="50px">Player Gun <span id="glevel"> 0</span> <button onclick="upgradeGun()" id="upCostGun"> Upgrade </button></div> 
+                </div>
+                <div id="pane">
+                <button onclick="mainMenu()"> Play Again</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-menu" >
+
+        <video
+        autoplay
+        muted
+        loop
+        id="background-video"
+      >
+        <source
+          src="/video/jetpackman-video/background_740.mp4"
+          type="video/mp4"
+        />
+      </video>
+        <input type="text" required id="pname" name="lname" placeholder="Enter Your Name"><br><br>
+    </div>
+  
+
+
+
+    <script src="/js/jetpackman/myGameArea.js"></script>
+    <script src="/js/jetpackman/component.js"></script>
+    <script src="/js/jetpackman/gallon.js"></script>
+    <script src="/js/jetpackman/monster.js"></script>
+    <script src="/js/jetpackman/player.js"></script>
+    <script src="/js/jetpackman/pipe.js"></script>
+    <script src="/js/jetpackman/controllers.js"></script>
+    <script src="/js/jetpackman/BulletController.js"></script>
+    <script src="/js/jetpackman/Bullet.js"></script>
+
+    <script src="/js/jetpackman/DOM.js"></script>
+</body>
+</html>

@@ -17,6 +17,11 @@
   <!-- START SCREEN -->
 
    <div id="contour">
+      <div class="side">
+        <div class="img-logo">
+          <img src="/images/snake-images/Logo.png" style="width: 100%;">
+      </div>
+      </div>
     <div class="contour">
   <div id="start-game">
 
@@ -41,6 +46,26 @@
   </div>
 
    </div>
+   <div id="comment">
+      {{!-- {{#if userInSession}} --}}
+      <form id="comment-form" action="/comment" method="post">
+      <div id="list-comments">
+          Comments from other players:
+          <div class="com-user">
+          {{#each comments}}
+          <h3>{{this.user.username}}</h3>
+            <p>{{this.content}}</p>
+      <hr>  
+          {{/each}}
+          </div>
+      </div>
+      <div>
+          <input type="text" name="content" placeholder="This game is great !" />
+          <button type="submit">Add a comment</button>
+          </div>
+      </form>
+      {{!-- {{/if}} --}}
+    </div>
     </div>
 
   <script src="/js/naruto/gameAudio.js"></script>
