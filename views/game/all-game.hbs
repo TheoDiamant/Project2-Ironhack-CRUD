@@ -1,12 +1,18 @@
 
 
-
+<div id="game-selection">
 {{#each games}}
+<div>
 
+<img src="/images/snake-images/Logo.png">
+<h3>{{this.name}}</h3>
 <a href="/game/{{this._id}}">Play to {{name}}</a>
-
-
+</div>
 {{/each}}
+</div>
+
+
+
 
 {{#if message}}
     <script>

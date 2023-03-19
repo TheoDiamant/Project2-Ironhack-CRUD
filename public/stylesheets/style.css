@@ -365,7 +365,132 @@ h2 {
 }
 
 
-/*USER PROFILE*/
+/*ALL GAME PAGE*/
+
+#game-selection {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 40px;
+  margin: 4vh;
+}
+
+#game-selection img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+#game-selection h3 {
+  margin: 10px 0;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+#game-selection a {
+  display: block;
+  text-align: center;
+  margin-top: 5px;
+}
+
+/* --------------------- */
+/* section for the comment */
+
+@import url('https://fonts.googleapis.com/css?family=Abel|Aguafina+Script|Artifika|Athiti|Condiment|Dosis|Droid+Serif|Farsan|Gurajada|Josefin+Sans|Lato|Lora|Merriweather|Noto+Serif|Open+Sans+Condensed:300|Playfair+Display|Rasa|Sahitya|Share+Tech|Text+Me+One|Titillium+Web');
+
+#comment{
+	background-image: linear-gradient(to top, rgba(205, 156, 242, 0.40) 0%, rgba(246, 255, 255, 0.71) 100%);
+	box-shadow: 0 15px 30px 1px rgba(128, 128, 128, 0.31);
+	text-align: center;
+  margin-top: 1em;
+	border-radius: 5px;
+	background: rgba(255, 255, 255, 0.95);
+	height: 300px;
+	padding: 1em;
+  display: flex;
+}
+
+#comment label {
+	/* background: url(https://static.pexels.com/photos/5782/nature-flowers-vintage-plant.jpg); */
+    /* -webkit-text-fill-color: transparent; */
+    -webkit-background-clip: text;
+	/* background-image: linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%); */
+	font-family: 'Playfair Display', serif;
+	/* background-repeat: no-repeat; */
+	/* background-attachment: fixed; */
+	background-size:cover;
+	letter-spacing: 2px;
+	font-size: 2.5em;
+	margin-bottom: 1em;
+}
+
+#comment-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.com-user h3 {
+ font-size: 14px
+}
+
+#comment button{
+	font-family: 'Farsan', cursive;
+	margin: 3px 0 1.5em 0;
+	font-size: 1.3em;
+	color: #7d7d7d;
+}
+
+#comment input {
+/* 	background: rgba(255, 13, 254, 0.90); */
+	/* width: 210px; */
+	display: inline-block;
+	text-align: center;
+	border-radius: 7px;
+	background: #eee;
+	padding: 1em 2em;
+	outline: none;
+	border: none;
+	color: #222;
+	transition: 0.3s linear;
+  margin-bottom: 0px;
+}
+::placeholder{color: #999;}
+#comment input:focus {background: rgba(0, 0, 333, 0.10);}
+
+#comment button {
+	background-image: linear-gradient(to left, rgb(164, 142, 255) 0%, rgba(145, 149, 251, 0.86) 100%);
+	box-shadow: 0 9px 25px -5px #df91fb;
+	font-family: 'Abel', sans-serif;
+	padding: 0.5em 1.9em;
+	margin: 1em 0 0 0;
+	border-radius: 7px;
+	font-size: 1.4em;
+	cursor: pointer;
+	color: #FFFFFF;
+	font-size: 1em;
+	outline: none;
+	border: none;
+	transition: 0.3s linear;
+}
+#comment button:hover{transform: translatey(2px);}
+#comment button:active{transform: translatey(5px);}
+
+#list-comments {
+	display: inline-block;
+	text-align: center;
+	border-radius: 7px;
+	background: #eee;
+	padding: 1em 2em;
+	outline: none;
+	border: none;
+	color: #4d4c4c;
+	transition: 0.3s linear;
+  margin-bottom: 0px;
+  max-height: 100%;
+  overflow-y: scroll;
+  margin-bottom: 1vh;
+}
 
 
 /* --------------------- */

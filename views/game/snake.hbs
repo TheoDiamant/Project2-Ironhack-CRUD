@@ -11,7 +11,7 @@
   <div id="contour">
     <div class="side">
       <div class="img-logo">
-          LOGO
+          <img src="/images/snake-images/Logo.png" style="width: 100%;">
       </div>
       <div class="game-intro">
         {{!-- ajouter le logo du snake2 aux mêmes dimensions que le canvas et ajouter un onclick sur le bouton démarrer le jeu qui supprimera cette div --}}
@@ -34,15 +34,18 @@
       <form id="comment-form" action="/comment" method="post">
       <div id="list-comments">
           Comments from other players:
-          <div>
+          <div class="com-user">
           {{#each comments}}
-            {{this.content}}
-          from {{this.user}}
+          <h3>{{this.user.username}}</h3>
+            <p>{{this.content}}</p>
+      <hr>  
           {{/each}}
           </div>
       </div>
+      <div>
           <input type="text" name="content" placeholder="This game is great !" />
           <button type="submit">Add a comment</button>
+          </div>
       </form>
       {{!-- {{/if}} --}}
     </div>

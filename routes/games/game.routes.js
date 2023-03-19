@@ -18,8 +18,9 @@ const {
 } = require("../../middleware/route-guard.js");
 const { populate } = require("../../models/User.model");
 
+
 ////////:DISPLAY ALL GAMME PAGE///////////
-router.get("/games", isLoggedIn, (req, res, next) => {
+router.get("/games", (req, res, next) => {
   const errorMessage = req.flash("error");
   Game.find().then((allGames) => {
     res.render("game/all-game", {
@@ -38,7 +39,7 @@ router.get("/game/:id", isLoggedIn, (req, res, next) => {
       Comment.find()
       .populate("user")
         .then((allComments) => {
-          console.log(allComments)
+          console.log("AL COMMENTS ARE",allComments)
           // Vérifiez si c'est le jeu Naruto et si l'utilisateur a fait au moins 5 points dans le jeu Snake
           if (game.name === "Naruto") {
             console.log("THE GAME IS", game.name);
@@ -50,8 +51,9 @@ router.get("/game/:id", isLoggedIn, (req, res, next) => {
                   model: "Game",
                 },
               })
+                .populate("comments")
               .then((user) => {
-                console.log("The user username is", user.username);
+                console.log("The user username is", user);
                 const snakeScores = user.score
                   .filter((score) => score.game.name === "Snake")
                   .map((score) => score.score);
@@ -129,8 +131,10 @@ router.post("/scores", isLoggedIn, async (req, res, next) => {
 router.post("/comment", isLoggedIn, (req, res, next) => {
   const { content } = req.body;
 
-  Comment.create({ content })
-    .then((newComment) => {
+  console.log("The content is",content)
+
+  Comment.create({ content, user: req.session.currentUser._id })   
+   .then((newComment) => {
       return User.findByIdAndUpdate(
         req.session.currentUser._id,
         { $push: { comments: newComment._id } },
