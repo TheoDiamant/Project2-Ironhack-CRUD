@@ -111,14 +111,27 @@ router.get('/userProfile', isLoggedIn, async (req, res) => {
         gameName: score.game.name
       }
     });
-    console.log(scores.score)
-    const highScore = scores.sort((a, b) => b.score - a.score)[0];
-    console.log(highScore)
+
+    const scoresByGame = {};
+    user.score.forEach(score => {
+      const gameName = score.game.name;
+      if (!scoresByGame[gameName]) {
+        scoresByGame[gameName] = [];
+      }
+      scoresByGame[gameName].push(score.score);
+    });
+    const highScoresByGame = Object.entries(scoresByGame).map(([gameName, scores]) => {
+      return {
+        gameName: gameName,
+        highScore: scores.reduce((acc, curr) => Math.max(acc, curr), 0)
+      };
+    });
 
     res.render('users/user-profile', { 
       userInSession: req.session.currentUser,
       scores: user.score,
-      layout: "loggedin-user.hbs" 
+      layout: "loggedin-user.hbs",
+      highScoresByGame: highScoresByGame,
     });
     } catch (err) {
       console.log(err);
