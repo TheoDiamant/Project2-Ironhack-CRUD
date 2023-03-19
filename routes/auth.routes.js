@@ -95,11 +95,35 @@ router.post('/login', isLoggedOut, (req, res, next) => {
       .catch(error => next(error));
   });
 
-router.get('/userProfile', isLoggedIn, (req, res) => {
+router.get('/userProfile', isLoggedIn, async (req, res) => {
+  try {
+    const user = await User.findById(req.session.currentUser._id).populate({
+      path: 'score',
+      populate: {
+        path: 'game',
+        model: 'Game'
+      }
+    });
+    
+    const scores = user.score.map(score => {
+      return {
+        score: score.score,
+        gameName: score.game.name
+      }
+    });
+    console.log(scores.score)
+    const highScore = scores.sort((a, b) => b.score - a.score)[0];
+    console.log(highScore)
 
-  res.render('users/user-profile', { 
-    userInSession: req.session.currentUser,
-    layout: "loggedin-user.hbs" });
+    res.render('users/user-profile', { 
+      userInSession: req.session.currentUser,
+      scores: user.score,
+      layout: "loggedin-user.hbs" 
+    });
+    } catch (err) {
+      console.log(err);
+      res.redirect('/login');
+    }
 });
 
 router.post('/logout', isLoggedIn, (req, res, next) => {

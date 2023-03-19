@@ -1,21 +1,71 @@
-
-<div class="container-fluid mt-3 pt-5 bg-danger">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/profile.css" />
+    <title>UserProfile: {{ userInSession.username }}</title>
+  </head>
+  <body>
+    
+<div id="background-picture" class="container-fluid mt-3 pt-5 bg-danger">
   
 </div>
 
+<div id="pictures">
+  <div id="main-picture">
+    <img src="/images/snake-images/phone3310.webp" alt="">
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#best-scores" role="tab" aria-controls="home" aria-selected="true">Best Scores</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" id="disabled-tab" data-bs-toggle="tab" href="#disabled" role="tab" aria-controls="disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="best-scores" role="tabpanel" aria-labelledby="home-tab">
+              {{#if userInSession.score}}
+                Your score:
+                {{#each scores}}
+                  <p> 
+                  {{ this.score }}
+                    {{#if this.game}}
+                      at {{ this.game.name }}
+                    {{/if}}
+                {{/each}}</p>
+                {{else}}
+                  <p>No score available.</p>
+                {{/if}}
+              {{#if userInSession}}
+      </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, asperiores provident ea eaque quis omnis adipisci in exercitationem necessitatibus dolorem.</div>
+        <div class="tab-pane fade" id="disabled" role="tabpanel" aria-labelledby="disabled-tab">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit rem accusamus officia quia eos ducimus consequuntur! Impedit aliquid vero suscipit.</div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+<div>
 
 
 
-
- {{#if userInSession}}
-
-
-   <button>
-    <a href="/editinfo">Edit user info</a>
+   <button class="btn btn-secondary">
+    <a href="/editinfo" style="color: white">Edit user info</a>
   </button>
    <form action="/delete" method="POST">
 
-   <button type="submit"> Delete the account </button>
+   <button  class="btn btn-danger" type="submit"> Delete the account </button>
 
 </form>
 {{else}}
@@ -24,6 +74,14 @@
  
 {{/if}}
 
+</div>
+
+<div>
+  
+  <h1>Welcome, {{ userInSession.username }}!</h1>
+
+</div>
 
 
-  <h2>Welcome, {{ userInSession.username }}!</h2> -->
+
+  </body>
