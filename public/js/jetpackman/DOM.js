@@ -24,11 +24,10 @@ function mainMenu()
     console.log(ctx);
   
     ctx.fillStyle = 'rgb(48, 46, 46,0.5)';
-    ctx.fillRect(myGameArea.canvas.width / 2 -250, myGameArea.canvas.height / 2 -250,500,500);
-    ctx.font = "80px VT323";
+    ctx.font = "60px VT323";
     ctx.textAlign = "center";
     ctx.fillStyle = "white";
-    ctx.fillText("Jet Pack Man!", myGameArea.canvas.width / 2 , myGameArea.canvas.height / 2 - 160);
+    ctx.fillText("Jet Pack Man!", myGameArea.canvas.width / 2 -10 , myGameArea.canvas.height / 2 - 100);
    
     ctx.fillStyle = "white";
     ctx.font = "italic 13pt Courier";
@@ -50,14 +49,14 @@ function mainMenu()
         {
             ctx.fillStyle = "rgb(48, 46, 46)";
             ctx.font = "30px VT323";
-            ctx.fillText("Made by Gonçalo Vilaboim", myGameArea.canvas.width / 2 , myGameArea.canvas.height / 2 - 120);
+            ctx.fillText("Made by Gonçalo Vilaboim", myGameArea.canvas.width / 2 , myGameArea.canvas.height / 2 - 180);
 
             a = false;
         }
         else if (!a && !isStarted){
             ctx.fillStyle = "rgb(78, 76, 76)";
             ctx.font = "30px VT323";
-            ctx.fillText("Made by Gonçalo Vilaboim", myGameArea.canvas.width / 2 , myGameArea.canvas.height / 2 - 120);        
+            ctx.fillText("Made by Gonçalo Vilaboim", myGameArea.canvas.width / 2 , myGameArea.canvas.height / 2 - 180);        
             a= true;  
 
         }

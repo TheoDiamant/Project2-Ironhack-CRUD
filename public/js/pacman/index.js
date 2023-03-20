@@ -1,61 +1,60 @@
 document.getElementById("play").addEventListener('click', (event) => {
 
 
-  const myGameArea = {
-    canvas: document.createElement("canvas"),
-    components: [],
-    obstacleComponents: [],
-    yellowDots: [],
-    cornerBonus: [],
-    enemy1: [],
-    enemy2: [],
-    enemy3: [],
-    isGameOver : false,
-    isGamePaused: false,
-    isWinner: false,
-    start: function () {
-      this.canvas.width = 500;
-      this.canvas.height = 500;
-      this.context = this.canvas.getContext("2d")
-      const gameBoard = document.getElementById("game-board");
-      gameBoard.appendChild(this.canvas);
-    },
-    update: function () {
-      const ctx = myGameArea.context
-      ctx.clearRect(0, 0, myGameArea.canvas.width, myGameArea.canvas.height)
-  
-      if (!myGameArea.isGameOver) {
-  
-      myGameArea.obstacleComponents.forEach((e) => {
-        e.render()
-      })
-  
-      document.getElementById("main-menu").style.display = "none"
-     
-  
-      myGameArea.cornerBonus.forEach((e) => {
-        if (e.checkCollision(pacman)) {
-  
-          function getColor() {
-            return Math.floor(Math.random() * 16777215).toString(16);
-          }
-  
-          let colorInterval = setInterval(() => {
-            pacman.color = `#${getColor()}`;
-          }, 20)
-  
-          setInterval(() => {
-            clearInterval(colorInterval)
-            return pacman.color = "red"
-          }, 4000)
-  
-          let indexBonus = myGameArea.cornerBonus.indexOf(e)
-          myGameArea.cornerBonus.splice(indexBonus, 1)
-         
+const myGameArea = {
+  canvas: document.createElement("canvas"),
+  components: [],
+  obstacleComponents: [],
+  yellowDots: [],
+  cornerBonus: [],
+  enemy1: [],
+  enemy2: [],
+  enemy3: [],
+  isGameOver : false,
+  isGamePaused: false,
+  isWinner: false,
+  start: function () {
+    this.canvas.width = 500;
+    this.canvas.height = 500;
+    this.context = this.canvas.getContext("2d")
+    const gameBoard = document.getElementById("game-board");
+    gameBoard.appendChild(this.canvas);
+  },
+  update: function () {
+    const ctx = myGameArea.context
+    ctx.clearRect(0, 0, myGameArea.canvas.width, myGameArea.canvas.height)
+
+    if (!myGameArea.isGameOver) {
+
+    myGameArea.obstacleComponents.forEach((e) => {
+      e.render()
+    })
+
+    document.getElementById("main-menu").style.display = "none"
+   
+
+    myGameArea.cornerBonus.forEach((e) => {
+      if (e.checkCollision(pacman)) {
+
+        function getColor() {
+          return Math.floor(Math.random() * 16777215).toString(16);
         }
-        e.render()
-      })
-  
+
+        let colorInterval = setInterval(() => {
+          pacman.color = `#${getColor()}`;
+        }, 20)
+
+        setInterval(() => {
+          clearInterval(colorInterval)
+          return pacman.color = "red"
+        }, 4000)
+
+        let indexBonus = myGameArea.cornerBonus.indexOf(e)
+        myGameArea.cornerBonus.splice(indexBonus, 1)
+       
+      }
+      e.render()
+    })
 
     if(myGameArea.yellowDots.length <= 0 && myGameArea.cornerBonus.length <= 0){
       enemy.speed = 0
@@ -666,4 +665,9 @@ document.onkeydown = function (e) {
 
 
 let score = 0
+
 })
+
+
+
+// write a function to calculate 2 numbers

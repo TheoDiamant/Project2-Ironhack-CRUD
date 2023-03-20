@@ -27,10 +27,7 @@ body {
   height: 600px;
 }
 
-#comment-side {
-  width: 25%;
-  height: 50%;
-}
+
 
 #game-description{
   background-color: rgb(0, 255, 89);
@@ -393,6 +390,64 @@ h2 {
 }
 
 /* --------------------- */
+
+
+/* section for the Display of unique game page */
+
+.img-logo {
+  height: 190px;
+}
+
+#contour {
+  display: flex;
+  justify-content: space-around;
+}
+
+.contour {
+  background-color: rgb(0, 0, 0);
+  border: 5px solid rgb(4, 4, 4);
+  height: 420px;
+  width: 661px;
+  /* padding-top: -9px; */
+  /* padding-bottom:  12px; */
+  margin-top: 1em;
+  box-shadow: 8px 8px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.side {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.061);
+  box-shadow: 8px 8px 10px 0 rgba(0, 0, 0, 0.5);
+  height: 490px;
+  width: 250px;
+  justify-content: space-around;
+}
+
+
+
+
+.logo-img {
+  width: 350px;
+}
+
+.description {
+  background-color: rgb(26 27 40);
+  border: 1px solid rgb(4, 4, 4);
+  height: 220px;
+  width: 540px;
+  /* padding-top: -9px; */
+  /* padding-bottom:  12px; */
+  margin-top: -3em;
+  box-shadow: 8px 8px 10px 0 rgba(0, 0, 0, 0.5);
+  margin-left: 50vh;
+}
+
+
+
+
+
 /* section for the comment */
 
 @import url('https://fonts.googleapis.com/css?family=Abel|Aguafina+Script|Artifika|Athiti|Condiment|Dosis|Droid+Serif|Farsan|Gurajada|Josefin+Sans|Lato|Lora|Merriweather|Noto+Serif|Open+Sans+Condensed:300|Playfair+Display|Rasa|Sahitya|Share+Tech|Text+Me+One|Titillium+Web');
@@ -404,7 +459,8 @@ h2 {
   margin-top: 1em;
 	border-radius: 5px;
 	background: rgba(255, 255, 255, 0.95);
-	height: 300px;
+	height: 550px;
+  width: 250px;
 	padding: 1em;
   display: flex;
 }
@@ -493,6 +549,18 @@ h2 {
 }
 
 
+.like {
+  margin-top: 60vh;
+    margin-left: 80vh;
+}
+
+.like-button {
+  width: 100px;
+}
+
+.description {
+
+}
 /* --------------------- */
 
 #game-board {

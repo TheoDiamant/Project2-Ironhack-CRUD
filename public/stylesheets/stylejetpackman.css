@@ -7,6 +7,44 @@ body{
     padding: 0 !important;
 }
 
+#contour {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .contour {
+    background-color: rgb(0, 0, 0);
+    border: 5px solid rgb(4, 4, 4);
+    height: 420px;
+    width: 661px;
+    /* padding-top: -9px; */
+    /* padding-bottom:  12px; */
+    margin-top: 1em;
+    box-shadow: 8px 8px 10px 0 rgba(0, 0, 0, 0.5);
+  }
+  
+  .side {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.061);
+    box-shadow: 8px 8px 10px 0 rgba(0, 0, 0, 0.5);
+    height: 490px;
+    width: 250px;
+    justify-content: space-around;
+  }
+
+
+#background-video {
+    position: fixed;
+    right: 0;
+    top: -11%;
+    min-width: 100px;
+    min-height: 100px;
+    z-index: -1;
+    opacity: 0.9;
+}
+
 h1{
     color: rgb(184, 163, 163);
 }
@@ -14,6 +52,12 @@ h1{
 
 .cc {
     z-index: 1;
+    position: absolute;
+    left: 50%;
+    top: 51%;
+    height: 416px;
+    width: 686px;
+    transform: translate(-50%, -50%);
 }
 
 button {
@@ -101,8 +145,13 @@ button:hover
 
 }
 
+#comment {
+    height: 490px;
+    width: 250px;
+  }
+
+  
 #pname{
-    position: absolute;
     top:85vh;
     bottom: 20vh;
     left: 40%;
@@ -128,13 +177,3 @@ button:hover
     height: 5%;
 }
 
-
-#background-video {
-    position: fixed;
-    right: 0;
-    top: -11%;
-    min-width: 100%;
-    min-height: 100%;
-    z-index: -1;
-    opacity: 0.9;
-}

@@ -13,6 +13,13 @@
       <div class="img-logo">
           <img src="/images/snake-images/Logo.png" style="width: 100%;">
       </div>
+
+      <div class="desc-game">
+        <h1>SNAKE</h1>
+        <p> <strong>Creator : </strong> Raphael Malet</p>
+        <a class="lk-gt" target="_blank" href="https://github.com/cforestier"><strong>Github : </strong> Raphael Malet</a>
+       
+      </div>
       <div class="game-intro">
         {{!-- ajouter le logo du snake2 aux mêmes dimensions que le canvas et ajouter un onclick sur le bouton démarrer le jeu qui supprimera cette div --}}
         <button id="start-button">Start your 3310!</button>
@@ -28,6 +35,13 @@
         </div>
       <!-- <canvas id="canvas" width="500" height="700"></canvas> -->
       </div>
+       <div class="like">
+
+      <form action="/like" method="post">
+               <button class="like-button" name="like" type="submit">Like</button>
+      </form>
+</div>
+
     </div>
     <div id="comment">
       {{!-- {{#if userInSession}} --}}
@@ -51,12 +65,6 @@
     </div>
   </div>
 
-<div class="like">
-
-      <form action="/like" method="post">
-               <button name="like" type="submit">Like</button>
-      </form>
-</div>
     <script src="/js/snake/index.js"></script>
   </body>
 </html>

@@ -14,8 +14,8 @@ const myGameArea = {
     monsters : [],
     isSpaceKeyPressed : false,
     generateCanvas: function () {
-        this.canvas.width = window.innerWidth;
-        this.canvas.height =  window.innerHeight;
+        this.canvas.width = 400; // set a width of 400 pixels
+        this.canvas.height = 400; // set a height of 400 pixels
         this.canvas.className = "cc";
         this.context = this.canvas.getContext('2d');
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);

@@ -190,11 +190,6 @@ router.post("/like", isLoggedIn, async (req, res, next) => {
     console.log(post)
   })
   
-  Game.findOne({name: "JetPackMan"})
-  .populate("score")
-  .then(post => {
-    console.log(post)
-  })
 });
 
 module.exports = router;

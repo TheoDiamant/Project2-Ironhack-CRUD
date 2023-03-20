@@ -22,7 +22,22 @@ const JetPackMan = [
     template: "jetpackman.hbs",
     logo: "/images/game_background_1.png",
 }
+]
 
+const Pongtennis = [
+    {
+    name: "Pong-Tennis", 
+    template: "pongtennis.hbs",
+    logo: "/images/Logo.png",
+    }
+]
+
+const ShootingMaster = [
+    {
+    name: "Shootin-master", 
+    template: "shootingmaster.hbs",
+    logo: "/images/Logo.png",
+    }
 ]
 
 
@@ -33,7 +48,7 @@ mongoose
 .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
 
-    Game.create(JetPackMan)
+    Game.create(ShootingMaster)
         .then(data => {
 
             console.log(`${data.length} games inserted.`)
