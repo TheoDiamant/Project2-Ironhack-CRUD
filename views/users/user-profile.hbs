@@ -23,10 +23,10 @@
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
-        <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+        <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Best Scores</a>
       </li>
       <li class="nav-item" role="presentation">
-        <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+        <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Likes</a>
       </li>
       <li class="nav-item">
         <a class="nav-link disabled" id="disabled-tab" data-bs-toggle="tab" href="#disabled" role="tab" aria-controls="disabled" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -69,12 +69,6 @@
 
 </div>
 
-<div>
-  
-  <h1>Welcome, {{ userInSession.username }}!</h1>
-
-</div>
-
 <div class="test-like">
 {{#if userInSession.like}}
 
@@ -82,6 +76,20 @@
 {{/if}}
 </div>
 
-
+<script>
+  window.onload =() => {
+        // Assign click event listeners to the tabs
+        var triggerTabList = [].slice.call(document.querySelectorAll('#myTab a'))
+        triggerTabList.forEach(function (triggerEl) {
+            var tabTrigger = new bootstrap.Tab(triggerEl)
+            triggerEl.addEventListener('click', function (event) {
+                event.preventDefault()
+                tabTrigger.show()
+            })
+        })
+  }
+  </script>
 
   </body>
+
+  

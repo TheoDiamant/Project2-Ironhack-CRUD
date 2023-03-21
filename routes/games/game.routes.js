@@ -51,7 +51,7 @@ router.get("/game/:id", isLoggedIn, (req, res, next) => {
                   model: "Game",
                 },
               })
-                .populate("comments")
+                .populate("comment")
               .then((user) => {
                 console.log("The user username is", user);
                 const snakeScores = user.score

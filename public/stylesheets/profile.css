@@ -1,14 +1,13 @@
-#background-picture{
-    height: 40vh;
-    width: 80vw;
+#background-picture {
+  height: 40vh;
+  width: 80vw;
 }
 
-#pictures{
-    display: flex;
-    width: 80vw;
+#pictures {
+  display: flex;
+  width: 80vw;
 }
 
-#main-picture img{
-    width: 300px;
+#main-picture img {
+  width: 300px;
 }
-
