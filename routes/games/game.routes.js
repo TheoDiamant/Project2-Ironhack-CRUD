@@ -37,10 +37,9 @@ router.get("/game/:id", isLoggedIn, (req, res, next) => {
 
   Game.findById(id)
     .then((game) => {
-      Comment.find()
+      Comment.find({ game: id })
       .populate("user")
         .then((allComments) => {
-          console.log("AL COMMENTS ARE",allComments)
           // Vérifiez si c'est le jeu Naruto et si l'utilisateur a fait au moins 5 points dans le jeu Snake
           if (game.name === "Naruto") {
             console.log("THE GAME IS", game.name);
@@ -76,7 +75,8 @@ router.get("/game/:id", isLoggedIn, (req, res, next) => {
                   res.render(`game/${game.template}`, {
                     userInSession: req.session.currentUser,
                     layout: "game-layout",
-                    game: game,
+                    comments: allComments,
+                    game
                   });
                 }
               })
@@ -86,40 +86,62 @@ router.get("/game/:id", isLoggedIn, (req, res, next) => {
             res.render(`game/${game.template}`, {
               userInSession: req.session.currentUser,
               layout: "game-layout",
-              comments: allComments
+              comments: allComments,
+              game
             });
           }
         })
     })
     .catch((err) => next(err));
+
+/*
+    User.findOne({username: "testfinal"})
+    .populate({
+      path: "comments",
+      populate: {
+        path: "game",
+        model: "Game"
+      }
+    })
+    .then((user) => {
+      console.log("User's comments:", user.comments);
+      user.comments.forEach(comment => {
+        console.log("Game associated with comment:", comment.game);
+      });
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+    */
 });
 
-// création d'une route post pour récupérer le nouveau score du jeu
+
+
 router.post("/scores", isLoggedIn, async (req, res, next) => {
   try {
     const { score, game } = req.body;
-
+    
     // Trouver l'utilisateur actuel dans la base de données
     const user = await User.findById(req.session.currentUser._id);
-
+    
     // Trouver le jeu correspondant dans la base de données
     const gameObj = await Game.findOne({ name: game });
-
+    
     // Créer un nouveau score
     const userScore = await Score.create({
       score,
       user: user._id,
       game: gameObj._id,
     });
-
+    
     // Ajouter le nouveau score au jeu correspondant
     gameObj.score.push(userScore);
     await gameObj.save();
-
+    
     // Ajouter le nouveau score à l'utilisateur
     user.score.push(userScore);
     await user.save();
-
+    
     const response = { message: `Score set successfully ${score}` };
     res.json(response);
   } catch (error) {
@@ -129,16 +151,18 @@ router.post("/scores", isLoggedIn, async (req, res, next) => {
 });
 
 ///// USER CREATE NEW COMMMENT////////////////
-router.post("/comment", isLoggedIn, (req, res, next) => {
+router.post("/game/:id/comments", isLoggedIn, (req, res, next) => {
   const { content } = req.body;
+  const { id } = req.params;
 
-  console.log("The content is",content)
+  console.log("The id is", id)
+  console.log("The content is", content)
 
-  Comment.create({ content, user: req.session.currentUser._id })   
-   .then((newComment) => {
-      return User.findByIdAndUpdate(
-        req.session.currentUser._id,
-        { $push: { comments: newComment._id } },
+  Comment.create({ content, user: req.session.currentUser._id, game: id })
+    .then((newComment) => {
+      return Game.findByIdAndUpdate(
+       id,
+        { $push: { comment: newComment._id } },
         { new: true }
       );
     })
@@ -150,47 +174,51 @@ router.post("/comment", isLoggedIn, (req, res, next) => {
       console.error(err);
       res.status(500).json({ error: "Internal server error" });
     });
+
 });
-
-router.post("/like", isLoggedIn, async (req, res, next) => {
-  try {
-    const { like } = req.body;
-
-    // Trouver l'utilisateur actuel dans la base de données
-    const user = await User.findById(req.session.currentUser._id);
-
-    // Trouver le jeu correspondant dans la base de données
-    const gameObj = await Game.findOne({name: "Snake"});
-
-    // Créer un nouveau like
-    const userlike = await Score.create({
-      like,
-      user: user._id,
-      game: gameObj._id,
-    });
-
-    // Ajouter le nouveau score au jeu correspondant
-    gameObj.like.push(userlike);
-    await gameObj.save();
-
-    // Ajouter le nouveau like à l'utilisateur
-    user.like.push(userlike);
-    await user.save();
-
-    const response = { message: `Score set successfully ${like}` };
-    res.json(response);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal server error" });
-  }
   
-  User.findOne({username: "testfinal"})
-  .populate("score")
-  .then(post => {
-    console.log(post)
-  })
   
-});
+  router.post("/game/:id/like", isLoggedIn, async (req, res, next) => {
+    try {
+      const { like } = req.body;
+      const { id } = req.params
+  
+      // Trouver l'utilisateur actuel dans la base de données
+      const user = await User.findById(req.session.currentUser._id);
+  
+      // Trouver le jeu correspondant dans la base de données
+      const gameObj = await Game.findById(id);
+  
+      // Créer un nouveau like
+      const userlike = await Like.create({
+        like,
+        user: user,
+        game: gameObj,
+      });
+  
+      // Ajouter le nouveau like au jeu correspondant
+      gameObj.like.push(userlike);
+      await gameObj.save();
+  
+      // Ajouter le nouveau like à l'utilisateur
+      user.like.push(userlike);
+      await user.save();
+  
+      const response = { message: `Like set successfully for game ${gameObj.name}` };
+      res.json(response);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Internal server error" });
+    }
 
-module.exports = router;
+    User.findOne({username: "testfinal"})
+    .then(user => {
+        console.log(user);
+      });
+ 
+  });
 
+
+  module.exports = router;
+  
+  

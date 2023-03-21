@@ -32,47 +32,39 @@
     <div class="contour">
   <div id="start-game">
 
-    <div class="gif-start-game">
-      <img class="naruto" src="https://media.tenor.com/Ekh0CfC8_xkAAAAC/naruto-ramen.gif" alt="gif-naruto">
-    </div>
     <button class="start-button">Start</button>
 
   </div>
 
   <!-- GAME SCREEN -->
-  <canvas style="display: none; margin-left: 108px; margin-top: 85px;"></canvas>
+  <canvas style="display: none;"></canvas>
 
   <!-- GAME OVER SCREEN -->
-  <div id="game-over">
+  <div id="game-over1">
     <h1>Game Over</h1>
     <p>Total of ramen eaten: <span id="points">40</span> Ramens!</p>
-    <div>
-      <img src="https://media.tenor.com/SNHcVikFJqcAAAAC/naruto-sad.gif" width="518" height="518" alt="gif-game-over-naruto">
-    </div>
     <button class="restart-button">Eat Again</button>
   </div>
 
    </div>
-   <div id="comment">
-      {{!-- {{#if userInSession}} --}}
-      <form id="comment-form" action="/comment" method="post">
-      <div id="list-comments">
-          Comments from other players:
-          <div class="com-user">
-          {{#each comments}}
-          <h3>{{this.user.username}}</h3>
-            <p>{{this.content}}</p>
-      <hr>  
-          {{/each}}
-          </div>
+  <div id="comment">
+  <form id="comment-form" action="/game/{{game._id}}/comments" method="post">
+    <div id="list-comments">
+      Comments from other players:
+      <div class="com-user">
+        {{#each comments}}
+        <h3>{{this.user.username}}</h3>
+        <p>{{this.content}}</p>
+        <hr>
+        {{/each}}
       </div>
-      <div>
-          <input type="text" name="content" placeholder="This game is great !" />
-          <button type="submit">Add a comment</button>
-          </div>
-      </form>
-      {{!-- {{/if}} --}}
     </div>
+    <div>
+      <input type="text" name="content" placeholder="This game is great!" />
+      <button type="submit">Add a comment</button>
+    </div>
+  </form>
+</div>
     </div>
 
   <script src="/js/naruto/gameAudio.js"></script>

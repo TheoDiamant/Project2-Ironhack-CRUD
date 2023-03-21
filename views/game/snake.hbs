@@ -35,36 +35,34 @@
         </div>
       <!-- <canvas id="canvas" width="500" height="700"></canvas> -->
       </div>
-       <div class="like">
-
-      <form action="/like" method="post">
-               <button class="like-button" name="like" type="submit">Like</button>
-      </form>
+      <div class="like">
+  <form action="/game/{{game._id}}/like" method="post">
+    <button class="like-button" name="like" value="1" type="submit">Like</button>
+  </form>
 </div>
 
     </div>
-    <div id="comment">
-      {{!-- {{#if userInSession}} --}}
-      <form id="comment-form" action="/comment" method="post">
-      <div id="list-comments">
-          Comments from other players:
-          <div class="com-user">
-          {{#each comments}}
-          <h3>{{this.user.username}}</h3>
-            <p>{{this.content}}</p>
-      <hr>  
-          {{/each}}
-          </div>
+   <div id="comment">
+  <form id="comment-form" action="/game/{{game._id}}/comments" method="post">
+    <div id="list-comments">
+      Comments from other players:
+      <div class="com-user">
+        {{#each comments}}
+        <h3>{{this.user.username}}</h3>
+        <p>{{this.content}}</p>
+        <hr>
+        {{/each}}
       </div>
-      <div>
-          <input type="text" name="content" placeholder="This game is great !" />
-          <button type="submit">Add a comment</button>
-          </div>
-      </form>
-      {{!-- {{/if}} --}}
     </div>
+    <div>
+      <input type="text" name="content" placeholder="This game is great!" />
+      <button type="submit">Add a comment</button>
+    </div>
+  </form>
+</div>
   </div>
 
+  
     <script src="/js/snake/index.js"></script>
   </body>
 </html>

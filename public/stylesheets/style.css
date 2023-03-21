@@ -561,6 +561,17 @@ h2 {
 .description {
 
 }
+
+.desc-game {
+  margin-bottom: 90px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.desc-game p {
+  font-size: 10px
+}
 /* --------------------- */
 
 #game-board {
@@ -569,6 +580,11 @@ h2 {
   position: relative;
 }
 
+.test-like{
+  width: 100px;
+   height: 100px;
+  background-color:red;
+}
 
 
 #phone3310 {

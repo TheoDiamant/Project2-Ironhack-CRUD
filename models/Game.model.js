@@ -34,6 +34,7 @@ const gameSchema = (
         template: { type: String, required: true },
         score: [{ type: Schema.Types.ObjectId, ref: "Score" }],
         like: [{ type: Schema.Types.ObjectId, ref: "Like" }],
+        comment: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
 
     }
 )
