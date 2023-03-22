@@ -1,64 +1,72 @@
-const Game = require("../models/Game.model")
-const mongoose = require("mongoose")
+const Game = require("../models/Game.model");
+const mongoose = require("mongoose");
 
 const Snake = [
-    {
-    name: "Snake", 
+  {
+    name: "Snake",
     template: "snake.hbs",
-    logo: "/images/Logo.png",
-}
-]
+    logo: "/images/snake-images/Logo.png",
+  },
+];
 
 const Naruto = [
-    {
-    name: "Naruto", 
+  {
+    name: "Naruto",
     template: "naruto.hbs",
-    }
-]
+    logo: "/images/naruto-images/naruto-logo.jpg",
+  },
+];
 
 const JetPackMan = [
-    {
-    name: "JetPackMan", 
+  {
+    name: "JetPackMan",
     template: "jetpackman.hbs",
-    logo: "/images/game_background_1.png",
-}
-]
+    logo: "/images/jetpackman-images/jet_fly/tile000.png",
+  },
+];
 
 const Pongtennis = [
-    {
-    name: "Pong-Tennis", 
+  {
+    name: "Pong-Tennis",
     template: "pongtennis.hbs",
-    logo: "/images/Logo.png",
-    }
-]
+    logo: "/images/pongTennis-images/pongtennis-Logo.jpg",
+  },
+];
 
 const ShootingMaster = [
-    {
-    name: "Shootin-master", 
+  {
+    name: "Shootin-master",
     template: "shootingmaster.hbs",
     logo: "/images/Logo.png",
-    }
-]
+  },
+];
 
+const Pacman = [
+  {
+    name: "Pacman",
+    template: "pacman.hbs",
+    logo: "/images/Logo.png",
+  },
+];
 
 const MONGO_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1/CRUDProject";
 
 mongoose
-.connect(MONGO_URI)
-.then((x) => {
-    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
+  .connect(MONGO_URI)
+  .then((x) => {
+    console.log(
+      `Connected to Mongo! Database name: "${x.connections[0].name}"`
+    );
 
-    Game.create(ShootingMaster)
-        .then(data => {
-
-            console.log(`${data.length} games inserted.`)
-            mongoose.connection.close()
-
-        }).catch((err) => {
-            console.error("Error creating games: ", err);
-        });
-
-})
-.catch((err) => {
+    Game.create(Pongtennis)
+      .then((data) => {
+        console.log(`${data.length} games inserted.`);
+        mongoose.connection.close();
+      })
+      .catch((err) => {
+        console.error("Error creating games: ", err);
+      });
+  })
+  .catch((err) => {
     console.error("Error connecting to mongo: ", err);
-});
+  });

@@ -1,63 +1,119 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/stylesheets/stylejetpackman.css">
-    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
-</head>
-<body>
+    <link rel="stylesheet" href="/stylesheets/stylejetpackman.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=VT323"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=VT323"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
 
-  <div id="contour">
-   <div class="side">
-      <div class="img-logo">
-          <img src="/images/snake-images/Logo.png" style="width: 100%;">
-      </div>
-      <div class="desc-game">
-        <h1>SNAKE</h1>
-        <p> <strong>Creator : </strong> Raphael Malet</p>
-        <a class="lk-gt" target="_blank" href="https://github.com/cforestier"><strong>Github : </strong> Raphael Malet</a>
-       
-      </div>
-       <input type="text" required id="pname" name="lname" placeholder="Enter Your Name"><br><br>
-      <div class="game-intro">
-        {{!-- ajouter le logo du snake2 aux mêmes dimensions que le canvas et ajouter un onclick sur le bouton démarrer le jeu qui supprimera cette div --}}
-    
-      </div>
-    </div>
-     <div class="contour">
-    <div  id="shop">
-        <div class="row">
-            <div class="block card">
-                <div id="pane">
-                    <div id="coiner" ></div>
-                   <h1> Jet Pack Man Shop</h1> <span id="coins"> Coins:</span>
-                </div>
-                <div id="pane">
-                    <div  id="coiner" class="two InsideContent" > </div>
-                    <div id="menu-item" class="InsideContent">  <img class="image" src="/images/jetpackman-images/jet_pack.png" width="50px" height="50px">   JetPack Level <span id="jlevel"> 0</span> <button onclick="upgradeJetPack()" id="upCostJet"> Upgrade </button></div> 
-                </div>
-                <div id="pane">
-                    <div  id="coiner" class="three InsideContent"></div>
-                    <div id="menu-item" class="InsideContent"> <img class="image" src="/images/jetpackman-images/head_white_helmet.png"  width="50px" height="50px"> Player health <span id="hlevel"> 0</span> <button onclick="upgradeHealth()" id="upCostHealth"> Upgrade </button></div> 
-                </div>
-                <div id="pane">
-                    <div  id="coiner" class="three InsideContent"></div>
-                    <div id="menu-item" class="InsideContent"> <img class="image" src="/images/jetpackman-images/gun.png"  width="50px" height="50px">Player Gun <span id="glevel"> 0</span> <button onclick="upgradeGun()" id="upCostGun"> Upgrade </button></div> 
-                </div>
-                <div id="pane">
-                <button onclick="mainMenu()"> Play Again</button>
-            </div>
-            </div>
+    <div id="contour">
+      <div class="side">
+        <div class="img-logo">
+          <img
+            src="/images/jetpackman-images/jet_fly/tile000.png"
+            style="width: 100%;"
+          />
+          <p style="text-align: center; color: white"><strong>Creator :
+            </strong>
+            Gonçalo Vilaboim</p>
         </div>
-    </div>
-</div>
-    <div id="main-menu" >
+        <div class="desc-game">
+          <br />
+          <h1>JetPackman</h1>
+          <a
+            class="lk-gt"
+            target="_blank"
+            href="https://gvilaboim.github.io/jet_pack_man/"
+          ><strong>Github : </strong>Gonçalo</a>
 
-      <!--  <video
+        </div>
+        <input
+          style="background-color: black; color:white"
+          type="text"
+          required
+          id="pname"
+          name="lname"
+          placeholder="Enter Your Name"
+        /><br /><br />
+        <div class="game-intro">
+          {{! ajouter le logo du snake2 aux mêmes dimensions que le canvas et ajouter un onclick sur le bouton démarrer le jeu qui supprimera cette div }}
+
+        </div>
+      </div>
+      <div class="contour">
+        <div id="shop">
+          <div class="row">
+            <div class="block card">
+              <div id="pane">
+                <div id="coiner"></div>
+                <h1> Jet Pack Man Shop</h1>
+                <span id="coins"> Coins:</span>
+              </div>
+              <div id="pane">
+                <div id="coiner" class="two InsideContent"> </div>
+                <div id="menu-item" class="InsideContent">
+                  <img
+                    class="image"
+                    src="/images/jetpackman-images/jet_pack.png"
+                    width="50px"
+                    height="50px"
+                  />
+                  JetPack Level
+                  <span id="jlevel"> 0</span>
+                  <button onclick="upgradeJetPack()" id="upCostJet">
+                    Upgrade
+                  </button></div>
+              </div>
+              <div id="pane">
+                <div id="coiner" class="three InsideContent"></div>
+                <div id="menu-item" class="InsideContent">
+                  <img
+                    class="image"
+                    src="/images/jetpackman-images/head_white_helmet.png"
+                    width="50px"
+                    height="50px"
+                  />
+                  Player health
+                  <span id="hlevel"> 0</span>
+                  <button onclick="upgradeHealth()" id="upCostHealth">
+                    Upgrade
+                  </button></div>
+              </div>
+              <div id="pane">
+                <div id="coiner" class="three InsideContent"></div>
+                <div id="menu-item" class="InsideContent">
+                  <img
+                    class="image"
+                    src="/images/jetpackman-images/gun.png"
+                    width="50px"
+                    height="50px"
+                  />Player Gun
+                  <span id="glevel"> 0</span>
+                  <button onclick="upgradeGun()" id="upCostGun">
+                    Upgrade
+                  </button></div>
+              </div>
+              <div id="pane">
+                <button onclick="mainMenu()"> Play Again</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="main-menu">
+
+        <!--  <video
         autoplay
         muted
         loop
@@ -68,30 +124,36 @@
           type="video/mp4"
         />
       </video> -->
-       
-    </div>
-    <div id="comment">
-  <form id="comment-form" action="/game/{{game._id}}/comments" method="post">
-    <div id="list-comments">
-      Comments from other players:
-      <div class="com-user">
-        {{#each comments}}
-        <h3>{{this.user.username}}</h3>
-        <p>{{this.content}}</p>
-        <hr>
-        {{/each}}
+
       </div>
-    </div>
-    <div>
-      <input type="text" name="content" placeholder="This game is great!" />
-      <button type="submit">Add a comment</button>
-    </div>
-  </form>
-</div>
-  
-  </div>
+      <div id="comment">
+        <form
+          id="comment-form"
+          action="/game/{{game._id}}/comments"
+          method="post"
+        >
+          <div id="list-comments">
+            Comments from other players:
+            <div class="com-user">
+              {{#each comments}}
+                <h3>{{this.user.username}}</h3>
+                <p>{{this.content}}</p>
+                <hr />
+              {{/each}}
+            </div>
+          </div>
+          <div>
+            <input
+              type="text"
+              name="content"
+              placeholder="This game is great!"
+            />
+            <button type="submit">Add a comment</button>
+          </div>
+        </form>
+      </div>
 
-
+    </div>
 
     <script src="/js/jetpackman/myGameArea.js"></script>
     <script src="/js/jetpackman/component.js"></script>
@@ -104,5 +166,5 @@
     <script src="/js/jetpackman/Bullet.js"></script>
 
     <script src="/js/jetpackman/DOM.js"></script>
-</body>
+  </body>
 </html>

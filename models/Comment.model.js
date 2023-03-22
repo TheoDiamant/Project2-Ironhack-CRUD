@@ -4,10 +4,10 @@ const commentSchema = new Schema(
   {
     content: String,
     game: { type: Schema.Types.ObjectId, ref: "Game" },
-    user: { type: Schema.Types.ObjectId, ref: "User" }
+    user: { type: Schema.Types.ObjectId, ref: "User" },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 

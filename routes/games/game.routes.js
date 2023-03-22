@@ -41,6 +41,7 @@ router.get("/game/:id", isLoggedIn, (req, res, next) => {
       .populate("user")
         .then((allComments) => {
           // Vérifiez si c'est le jeu Naruto et si l'utilisateur a fait au moins 5 points dans le jeu Snake
+          console.log("The game is ",game)
           if (game.name === "Naruto") {
             console.log("THE GAME IS", game.name);
             User.findOne({ _id: req.session.currentUser._id })
@@ -53,7 +54,7 @@ router.get("/game/:id", isLoggedIn, (req, res, next) => {
               })
                 .populate("comment")
               .then((user) => {
-                console.log("The user username is", user);
+                console.log("The user username is", user.username);
                 const snakeScores = user.score
                   .filter((score) => score.game.name === "Snake")
                   .map((score) => score.score);
@@ -113,6 +114,11 @@ router.get("/game/:id", isLoggedIn, (req, res, next) => {
       console.error(err);
     });
     */
+
+    User.findOne({username: "testfinal"})
+    .populate("score")
+    .then(post => 
+      console.log("the user ISSSSS",post))
 });
 
 
