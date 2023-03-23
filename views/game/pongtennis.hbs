@@ -1,70 +1,99 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pongtennis</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Wire+One&display=swap');
+      @import
+      url('https://fonts.googleapis.com/css2?family=Wire+One&display=swap');
     </style>
-    <link rel="stylesheet" href="/stylesheets/stylepongtennis.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/stylesheets/stylepongtennis.css" />
+  </head>
+  <body>
 
-
-     <div id="contour">
-        <div class="side">
-             <div class="img-logo">
-          <img src="/images/pongTennis-images/pongtennis-Logo.jpg" style="width: 100%;">
-      </div>
-      <br>
-        <p style="text-align: center"><strong>Creator : </strong> Wilkins</p>
-        <br>
-
-      <div class="desc-game">
-        <h1>Pong</h1>
-        <a class="lk-gt" target="_blank" href="http://w1lkns.github.io/pong-tennis-js"><strong>Github : </strong>Wilkins</a>
-       
-      </div>
+    <div id="contour">
+      <div class="side">
+        <div class="img-logo">
+          <img
+            src="/images/pongTennis-images/pongtennis-Logo.jpg"
+            style="width: 100%;"
+          />
         </div>
-         <div class="contour">
+        <br />
+        <p style="text-align: center"><strong>Creator : </strong> Wilkins</p>
+        <br />
 
-         
-    <canvas id="game-area" width="650" height="420" style="display: none;"></canvas>
+        <div class="desc-game">
+          <h1>Pong</h1>
+          <a
+            class="lk-gt"
+            target="_blank"
+            href="http://w1lkns.github.io/pong-tennis-js"
+          ><strong>Github : </strong>Wilkins</a>
 
-    <div id="game-start" style="display: '';">
-       
-                <a href="#" onclick="startGame()"><h2>CLICK HERE TO START THE GAME</h2></a>
-    </div>
+        </div>
+      </div>
+      <div class="contour">
 
-    <div id="game-over" style="display: none;">
-        <h1>GAME OVER</h1>
-            <H1 id="winner">PLAYER X WINS</H1>
-                <a href="#" onclick="startGame()"><h2 >CLICK HERE TO RESTART THE GAME</h2></a>
-     </div>
-    </div>
+        <canvas
+          id="game-area"
+          width="650"
+          height="420"
+          style="display: none;"
+        ></canvas>
+
+        <div id="game-start" style="display: '';">
+
+          <a href="#" onclick="startGame()"><h2>CLICK HERE TO START THE GAME</h2></a>
+        </div>
+        <div class="like">
+          <form action="/game/{{game._id}}/like" method="post">
+            <button
+              class="like-button"
+              name="like"
+              value="1"
+              type="submit"
+            >Like</button>
+          </form>
+        </div>
+        <div id="game-over" style="display: none;">
+          <h1>GAME OVER</h1>
+          <H1 id="winner">PLAYER X WINS</H1>
+          <a href="#" onclick="startGame()"><h2>CLICK HERE TO RESTART THE GAME</h2></a>
+        </div>
+      </div>
       <div id="comment">
-  <form id="comment-form" action="/game/{{game._id}}/comments" method="post">
-    <div id="list-comments">
-      Comments from other players:
-      <div class="com-user">
-        {{#each comments}}
-        <h3>{{this.user.username}}</h3>
-        <p>{{this.content}}</p> aeeeaa
-        <hr>
-        {{/each}}
+        <form
+          id="comment-form"
+          action="/game/{{game._id}}/comments"
+          method="post"
+        >
+          <div id="list-comments">
+            Comments from other players:
+            <div class="com-user">
+              {{#each comments}}
+                <h3>{{this.user.username}}</h3>
+                <p>{{this.content}}</p>
+                aeeeaa
+                <hr />
+              {{/each}}
+            </div>
+          </div>
+          <div>
+            <input
+              type="text"
+              name="content"
+              placeholder="This game is great!"
+            />
+            <button type="submit">Add a comment</button>
+          </div>
+        </form>
       </div>
     </div>
-    <div>
-      <input type="text" name="content" placeholder="This game is great!" />
-      <button type="submit">Add a comment</button>
-    </div>
-  </form>
-</div>    </div>
     <script src="/js/pongtennis/main.js"></script>
     <script src="/js/pongtennis/ball.js"></script>
     <script src="/js/pongtennis/player.js"></script>
 
-</body>
+  </body>
 </html>

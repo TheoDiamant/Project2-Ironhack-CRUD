@@ -2,7 +2,10 @@
   {{#each games}}
     <div>
 
-      <img src="{{this.logo}}" style="width: 582px; height: 284px" />
+      <img
+        src="{{this.logo}}"
+        style="width: 582px; height: 284px; margin: auto;"
+      />
       <br />
       <a href="/game/{{this._id}}">Play to {{name}}</a>
     </div>

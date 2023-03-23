@@ -1,12 +1,12 @@
 body {
   padding: 0px;
   margin: 0px;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   background-color: rgb(26, 27, 40);
 }
 
-.nav-bar{
-  border: 1px solid  rgba(0, 0, 0, 0.5);
+.nav-bar {
+  border: 1px solid rgba(0, 0, 0, 0.5);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   padding: 0px;
   margin: 0px;
@@ -27,9 +27,7 @@ body {
   height: 600px;
 }
 
-
-
-#game-description{
+#game-description {
   background-color: rgb(0, 255, 89);
 }
 
@@ -49,7 +47,7 @@ body {
   height: 50%;
 }
 
-#game-description{
+#game-description {
   background-color: rgb(0, 255, 89);
 }
 
@@ -59,7 +57,7 @@ a {
   font-size: 1.5em;
 }
 
-.submit-input{
+.submit-input {
   padding: 15px;
   border-radius: 10px;
   border: 2px solid transparent;
@@ -72,13 +70,13 @@ form {
 }
 
 .form {
-  border: 1px solid  rgb(40, 41, 61);
+  border: 1px solid rgb(40, 41, 61);
   border-radius: 10px;
   margin: 60px auto;
   max-width: 450px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
-.already{
+.already {
   display: flex;
   justify-content: center;
   margin-top: 10px;
@@ -96,15 +94,13 @@ form {
 .center-input input {
   padding: 10px 120px;
   background-color: rgb(40, 41, 61);
-  border: 2px solid rgb(40, 41, 61);;
+  border: 2px solid rgb(40, 41, 61);
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   color: white;
 }
 
-
-
-.already strong{
+.already strong {
   text-align: center;
   color: rgb(164, 142, 255);
   margin-left: 5px;
@@ -141,8 +137,6 @@ form ::placeholder {
   text-align: left;
 }
 
-
-
 form button {
   background: #43a3e6;
   border: 1px solid #43a3e6;
@@ -157,7 +151,6 @@ form button {
   transition: 0.3s ease background;
   width: 100%;
 }
-
 
 form button:hover {
   background: #fff;
@@ -174,7 +167,6 @@ form button:hover {
   width: 100%;
 }
 
-
 /* NAV BAR */
 
 .nav-bar {
@@ -182,7 +174,7 @@ form button:hover {
   justify-content: space-between;
   align-items: center;
   height: 90px;
-  background-color:rgb(26, 27, 40);
+  background-color: rgb(26, 27, 40);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 0 20px;
 }
@@ -205,14 +197,13 @@ form button:hover {
   padding: 8px;
   border-radius: 10px;
   border: none;
-  background-color: rgb(40, 41, 61);;
+  background-color: rgb(40, 41, 61);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-size: 16px;
 }
 
-.buttons{
+.buttons {
   margin-top: 14px;
-  
 }
 
 .buttons a {
@@ -220,7 +211,7 @@ form button:hover {
   text-decoration: none;
   padding: 10px 40px;
   border-radius: 10px;
-  background-color: rgb(164, 142, 255);;
+  background-color: rgb(164, 142, 255);
   color: rgb(255, 255, 255);
   font-size: 16px;
 }
@@ -250,10 +241,9 @@ form button:hover {
   margin-left: 10px;
   text-decoration: none;
   border-radius: 10px;
-  background-color: rgb(225, 17, 17);;
+  background-color: rgb(225, 17, 17);
   color: rgb(255, 255, 255);
   font-size: 16px;
-  
 }
 /* END OF NAV BAR */
 h2 {
@@ -268,12 +258,9 @@ h2 {
   font-size: 35px;
 }
 
-
-
 #logout-form {
   display: inline;
 }
-
 
 .game-intro {
   display: flex;
@@ -296,7 +283,6 @@ h2 {
 .arrows-img {
   width: 150px;
 }
-
 
 #start-button {
   width: 350px;
@@ -362,7 +348,6 @@ h2 {
   outline: 0;
 }
 
-
 /*ALL GAME PAGE*/
 
 #game-selection {
@@ -391,7 +376,6 @@ h2 {
 }
 
 /* --------------------- */
-
 
 /* section for the Display of unique game page */
 
@@ -426,9 +410,6 @@ h2 {
   justify-content: space-around;
 }
 
-
-
-
 .logo-img {
   width: 350px;
 }
@@ -445,39 +426,41 @@ h2 {
   margin-left: 50vh;
 }
 
-
-
-
-
 /* section for the comment */
 
-@import url('https://fonts.googleapis.com/css?family=Abel|Aguafina+Script|Artifika|Athiti|Condiment|Dosis|Droid+Serif|Farsan|Gurajada|Josefin+Sans|Lato|Lora|Merriweather|Noto+Serif|Open+Sans+Condensed:300|Playfair+Display|Rasa|Sahitya|Share+Tech|Text+Me+One|Titillium+Web');
+@import url("https://fonts.googleapis.com/css?family=Abel|Aguafina+Script|Artifika|Athiti|Condiment|Dosis|Droid+Serif|Farsan|Gurajada|Josefin+Sans|Lato|Lora|Merriweather|Noto+Serif|Open+Sans+Condensed:300|Playfair+Display|Rasa|Sahitya|Share+Tech|Text+Me+One|Titillium+Web");
 
-#comment{
-	background-image: linear-gradient(to top, rgba(205, 156, 242, 0.40) 0%, rgba(246, 255, 255, 0.71) 100%);
-	box-shadow: 0 15px 30px 1px rgba(128, 128, 128, 0.31);
-	text-align: center;
+#comment {
+  background-image: linear-gradient(
+    to top,
+    rgba(205, 156, 242, 0.4) 0%,
+    rgba(246, 255, 255, 0.71) 100%
+  );
+  box-shadow: 0 15px 30px 1px rgba(128, 128, 128, 0.31);
+  text-align: center;
   margin-top: 1em;
-	border-radius: 5px;
-	background: rgba(255, 255, 255, 0.95);
-	height: 550px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.95);
+  height: 550px;
   width: 250px;
-	padding: 1em;
+  padding: 1em;
   display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 #comment label {
-	/* background: url(https://static.pexels.com/photos/5782/nature-flowers-vintage-plant.jpg); */
-    /* -webkit-text-fill-color: transparent; */
-    -webkit-background-clip: text;
-	/* background-image: linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%); */
-	font-family: 'Playfair Display', serif;
-	/* background-repeat: no-repeat; */
-	/* background-attachment: fixed; */
-	background-size:cover;
-	letter-spacing: 2px;
-	font-size: 2.5em;
-	margin-bottom: 1em;
+  /* background: url(https://static.pexels.com/photos/5782/nature-flowers-vintage-plant.jpg); */
+  /* -webkit-text-fill-color: transparent; */
+  -webkit-background-clip: text;
+  /* background-image: linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%); */
+  font-family: "Playfair Display", serif;
+  /* background-repeat: no-repeat; */
+  /* background-attachment: fixed; */
+  background-size: cover;
+  letter-spacing: 2px;
+  font-size: 2.5em;
+  margin-bottom: 1em;
 }
 
 #comment-form {
@@ -488,90 +471,92 @@ h2 {
 }
 
 .com-user h3 {
- font-size: 14px
+  font-size: 14px;
 }
 
-#comment button{
-	font-family: 'Farsan', cursive;
-	margin: 3px 0 1.5em 0;
-	font-size: 1.3em;
-	color: #7d7d7d;
+#comment button {
+  font-family: "Farsan", cursive;
+  margin: 3px 0 1.5em 0;
+  font-size: 1.3em;
+  color: #7d7d7d;
 }
 
 #comment input {
-/* 	background: rgba(255, 13, 254, 0.90); */
-	/* width: 210px; */
-	display: inline-block;
-	text-align: center;
-	border-radius: 7px;
-	background: #eee;
-	padding: 1em 2em;
-	outline: none;
-	border: none;
-	color: #222;
-	transition: 0.3s linear;
+  /* 	background: rgba(255, 13, 254, 0.90); */
+  /* width: 210px; */
+  display: inline-block;
+  text-align: center;
+  border-radius: 7px;
+  background: #eee;
+  padding: 1em 2em;
+  outline: none;
+  border: none;
+  color: #222;
+  transition: 0.3s linear;
   margin-bottom: 0px;
 }
-::placeholder{color: #999;}
-#comment input:focus {background: rgba(0, 0, 333, 0.10);}
+::placeholder {
+  color: #999;
+}
+#comment input:focus {
+  background: rgba(0, 0, 333, 0.1);
+}
 
 #comment button {
-	background-image: linear-gradient(to left, rgb(164, 142, 255) 0%, rgba(145, 149, 251, 0.86) 100%);
-	box-shadow: 0 9px 25px -5px #df91fb;
-	font-family: 'Abel', sans-serif;
-	padding: 0.5em 1.9em;
-	margin: 1em 0 0 0;
-	border-radius: 7px;
-	font-size: 1.4em;
-	cursor: pointer;
-	color: #FFFFFF;
-	font-size: 1em;
-	outline: none;
-	border: none;
-	transition: 0.3s linear;
+  background-image: linear-gradient(
+    to left,
+    rgb(164, 142, 255) 0%,
+    rgba(145, 149, 251, 0.86) 100%
+  );
+  box-shadow: 0 9px 25px -5px #df91fb;
+  font-family: "Abel", sans-serif;
+  padding: 0.5em 1.9em;
+  margin: 1em 0 0 0;
+  border-radius: 7px;
+  font-size: 1.4em;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 1em;
+  outline: none;
+  border: none;
+  transition: 0.3s linear;
 }
-#comment button:hover{transform: translatey(2px);}
-#comment button:active{transform: translatey(5px);}
+#comment button:hover {
+  transform: translatey(2px);
+}
+#comment button:active {
+  transform: translatey(5px);
+}
 
 #list-comments {
-	display: inline-block;
-	text-align: center;
-	border-radius: 7px;
-	background: #eee;
-	padding: 1em 2em;
-	outline: none;
-	border: none;
-	color: #4d4c4c;
-	transition: 0.3s linear;
+  display: inline-block;
+  text-align: center;
+  border-radius: 7px;
+  background: #eee;
+  padding: 1em 2em;
+  outline: none;
+  border: none;
+  color: #4d4c4c;
+  transition: 0.3s linear;
   margin-bottom: 0px;
   max-height: 100%;
   overflow-y: scroll;
   margin-bottom: 1vh;
 }
 
-
-.like {
-  margin-top: 60vh;
-    margin-left: 80vh;
-}
-
 .like-button {
   width: 100px;
 }
 
-.description {
-
-}
-
 .desc-game {
   margin-bottom: 90px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .desc-game p {
-  font-size: 10px
+  font-size: 10px;
 }
 /* --------------------- */
 
@@ -581,12 +566,16 @@ h2 {
   position: relative;
 }
 
-.test-like{
+.test-like {
   width: 100px;
-   height: 100px;
-  background-color:red;
+  height: 100px;
+  background-color: red;
 }
 
+.like {
+  text-align: center;
+  margin-top: 30em;
+}
 
 #phone3310 {
   position: absolute;
