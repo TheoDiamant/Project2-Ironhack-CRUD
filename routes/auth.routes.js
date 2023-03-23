@@ -115,7 +115,6 @@ router.get('/userProfile', isLoggedIn, async (req, res) => {
     const scoresByGame = {};
     user.score.forEach(score => {
       const gameName = score.game.name;
-      const gameLogo = s
       if (!scoresByGame[gameName]) {
         scoresByGame[gameName] = [];
       }

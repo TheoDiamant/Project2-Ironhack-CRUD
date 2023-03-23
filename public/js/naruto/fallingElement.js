@@ -45,7 +45,7 @@ class FallingElement extends Shape {
           window.endGame();
           clearInterval(interval);
           document.querySelector('canvas').style.display = 'none';
-          document.querySelector('#game-over').style.display = 'flex';
+          
 
           GameAudio.stopStartGameSound();
           GameAudio.playGameOverSound();
