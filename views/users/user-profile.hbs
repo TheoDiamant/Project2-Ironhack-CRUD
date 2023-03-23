@@ -39,6 +39,7 @@
                       {{#if userInSession.score}}
                   {{#each highScoresByGame}}
                     <p>Your high score in <b>{{this.gameName}}: {{this.highScore}}</b></p>
+                    <img src="{{this.gameLogo}}">
                   {{/each}}
                 {{else}}
                   <p>No score available.</p>

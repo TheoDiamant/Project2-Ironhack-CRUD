@@ -41,9 +41,7 @@ router.get("/game/:id", isLoggedIn, (req, res, next) => {
       .populate("user")
         .then((allComments) => {
           // Vérifiez si c'est le jeu Naruto et si l'utilisateur a fait au moins 5 points dans le jeu Snake
-          console.log("The game is ",game)
           if (game.name === "Naruto") {
-            console.log("THE GAME IS", game.name);
             User.findOne({ _id: req.session.currentUser._id })
               .populate({
                 path: "score",
@@ -52,21 +50,12 @@ router.get("/game/:id", isLoggedIn, (req, res, next) => {
                   model: "Game",
                 },
               })
-                .populate("comment")
               .then((user) => {
-                console.log("The user username is", user.username);
                 const snakeScores = user.score
                   .filter((score) => score.game.name === "Snake")
                   .map((score) => score.score);
                 const maxSnakeScore = Math.max(...snakeScores);
-                console.log(
-                  "the biggest score is of the user is:",
-                  maxSnakeScore,
-                  "and all the scores of the user are",
-                  snakeScores
-                );
                 if (!maxSnakeScore || maxSnakeScore < 5) {
-                  // Redirigez l'utilisateur vers une page d'erreur s'il n'a pas réussi à faire au moins 5 points dans le jeu Snake
                   req.flash(
                     "error",
                     "You need to do 5 points in snake to play Naruto"
@@ -82,8 +71,37 @@ router.get("/game/:id", isLoggedIn, (req, res, next) => {
                 }
               })
               .catch((err) => next(err));
+          } else if (game.name === "JetPackMan") {
+            User.findOne({ _id: req.session.currentUser._id })
+              .populate({
+                path: "score",
+                populate: {
+                  path: "game",
+                  model: "Game",
+                },
+              })
+              .then((user) => {
+                const narutoScores = user.score
+                  .filter((score) => score.game.name === "Naruto")
+                  .map((score) => score.score);
+                const maxNarutoScore = Math.max(...narutoScores);
+                if (!maxNarutoScore || maxNarutoScore < 5) {
+                  req.flash(
+                    "error",
+                    "You need to do 5 points in Naruto to play JetPackMan"
+                  );
+                  res.redirect("/games");
+                } else {
+                  res.render(`game/${game.template}`, {
+                    userInSession: req.session.currentUser,
+                    layout: "game-layout",
+                    comments: allComments,
+                    game
+                  });
+                }
+              })
+              .catch((err) => next(err));
           } else {
-            // Pour les autres jeux, rendre simplement la vue du jeu
             res.render(`game/${game.template}`, {
               userInSession: req.session.currentUser,
               layout: "game-layout",
@@ -92,33 +110,9 @@ router.get("/game/:id", isLoggedIn, (req, res, next) => {
             });
           }
         })
+        .catch((err) => next(err));
     })
     .catch((err) => next(err));
-
-/*
-    User.findOne({username: "testfinal"})
-    .populate({
-      path: "comments",
-      populate: {
-        path: "game",
-        model: "Game"
-      }
-    })
-    .then((user) => {
-      console.log("User's comments:", user.comments);
-      user.comments.forEach(comment => {
-        console.log("Game associated with comment:", comment.game);
-      });
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-    */
-
-    User.findOne({username: "testfinal"})
-    .populate("score")
-    .then(post => 
-      console.log("the user ISSSSS",post))
 });
 
 

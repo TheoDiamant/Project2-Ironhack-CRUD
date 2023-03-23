@@ -297,6 +297,7 @@ h2 {
   width: 150px;
 }
 
+
 #start-button {
   width: 350px;
   font-size: 30px;
@@ -368,7 +369,7 @@ h2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 40px;
-  margin: 4vh;
+  margin: 6vh;
 }
 
 #game-selection img {
