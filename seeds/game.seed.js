@@ -49,7 +49,7 @@ const Pacman = [
   },
 ];
 
-const MONGO_URI = process.env.MONGODB_URI || "mongodb+srv://TheoRaphael:zsbKtyOqyByN63th@project2crud.hqphxaq.mongodb.net/CRUDProject";
+const MONGO_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1/CRUDProject";
 
 mongoose
   .connect(MONGO_URI)

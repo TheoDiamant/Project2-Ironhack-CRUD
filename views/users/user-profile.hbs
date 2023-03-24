@@ -8,28 +8,11 @@
     <title>UserProfile: {{ userInSession.username }}</title>
   </head>
   <body>
-    
-<div id="background-picture" class="container-fluid mt-3 pt-5 bg-danger">
-  
-</div>
-
-<div id="pictures">
-  <div id="main-picture">
-    <img src="/images/snake-images/phone3310.webp" alt="">
-  </div>
-
-
 <div class="card">
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
         <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Best Scores</a>
-      </li>
-      <li class="nav-item" role="presentation">
-        <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Likes</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" id="disabled-tab" data-bs-toggle="tab" href="#disabled" role="tab" aria-controls="disabled" tabindex="-1" aria-disabled="true">Disabled</a>
       </li>
     </ul>
   </div>
@@ -38,7 +21,7 @@
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                       {{#if userInSession.score}}
                   {{#each highScoresByGame}}
-                    <p>Your high score in <b>{{this.gameName}}: {{this.highScore}}</b></p>
+                    <p style="color: white;">Your high score in <b>{{this.gameName}}: {{this.highScore}}</b></p>
                     <img src="{{this.gameLogo}}">
                   {{/each}}
                 {{else}}
@@ -46,31 +29,18 @@
                 {{/if}}
               {{#if userInSession}}
       </div>
-      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-  {{#if userInSession.like.length}}
-    <ul>
-      {{#each userInSession.like}}
-        <li>{{this.game.name}}</li>
-      {{/each}}
-    </ul>
-  {{else}}
-    <p>No likes yet.</p>
-  {{/if}}
-</div>
-
-      <div class="tab-pane fade" id="disabled" role="tabpanel" aria-labelledby="disabled-tab">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit rem accusamus officia quia eos ducimus consequuntur! Impedit aliquid vero suscipit.</div>
     </div>
   </div>
 </div>
   </div>
 
-<div>
-   <button class="btn btn-secondary">
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 1em;">
+   <button  class="btn btn-secondary">
     <a href="/editinfo" style="color: white">Edit user info</a>
   </button>
    <form action="/delete" method="POST">
 
-   <button  class="btn btn-danger" type="submit"> Delete the account </button>
+   <button style="font-size: 1.5em;" class="btn btn-danger" type="submit"> Delete the account </button>
 
 </form>
 {{else}}
@@ -80,7 +50,6 @@
 {{/if}}
 
 </div>
-
 
 <script>
   window.onload =() => {
