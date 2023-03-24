@@ -128,7 +128,7 @@ router.post('/login', isLoggedOut, (req, res, next) => {
       });
   
       const gamesLiked = user.like.map((like) => like.game);
-  
+
       res.render('users/user-profile', { 
         userInSession: req.session.currentUser,
         scores: user.score,
@@ -141,7 +141,7 @@ router.post('/login', isLoggedOut, (req, res, next) => {
         res.redirect('/login');
       }
   });
-  
+
 router.post('/logout', isLoggedIn, (req, res, next) => {
     req.session.destroy(err => {
       if (err) next(err);

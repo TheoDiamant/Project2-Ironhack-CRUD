@@ -138,8 +138,8 @@ form ::placeholder {
 }
 
 form button {
-  background: #43a3e6;
-  border: 1px solid #43a3e6;
+  background: rgb(164, 142, 255);
+  border: 1px solid rgb(164, 142, 255);;
   border-radius: 4px;
   color: #fff;
   cursor: pointer;
