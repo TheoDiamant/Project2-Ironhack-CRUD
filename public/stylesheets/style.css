@@ -138,8 +138,8 @@ form ::placeholder {
 }
 
 form button {
-  background: #43a3e6;
-  border: 1px solid #43a3e6;
+  background: rgb(164, 142, 255);
+  border: 1px solid rgb(164, 142, 255);;
   border-radius: 4px;
   color: #fff;
   cursor: pointer;
@@ -595,6 +595,7 @@ h2 {
   align-items: center;
   background-color: #96d202;
 }
+
 
 #reload-button {
   background-color: #3dd1e7;

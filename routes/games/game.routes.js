@@ -168,10 +168,7 @@ router.post("/game/:id/comments", isLoggedIn, (req, res, next) => {
         { new: true }
       );
     })
-    .then(() => {
-      const response = { message: "Comment posted successfully" };
-      res.status(200).json(response);
-    })
+
     .catch((err) => {
       console.error(err);
       res.status(500).json({ error: "Internal server error" });

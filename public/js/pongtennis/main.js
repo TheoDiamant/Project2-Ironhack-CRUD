@@ -29,7 +29,9 @@ function checkScore(){
     if(player1.score >= highscore){
         let winner1 = document.getElementById('winner')
         winner1.innerHTML = "Player 1 Wins"
+        Score.saveScore(Player1.score)
         stopGame();
+        
     } else if (player2.score >= highscore){
         let winner2 = document.getElementById('winner')
         winner2.innerHTML = "Player 2 Wins"
@@ -157,3 +159,28 @@ function hitPlayer(player){
         soundBallPlayer.play();
     }
 }
+
+let scoreSent = false;
+const Score = {
+  saveScore: function (score, game) {
+    if (!scoreSent) {
+      fetch("http://localhost:3000/scores", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ score, game: "JetPackMan" }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // console.log("Score inserted!:", data);
+          // Définition de la variable globale sur true
+          scoreSent = true;
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
+  }
+};
