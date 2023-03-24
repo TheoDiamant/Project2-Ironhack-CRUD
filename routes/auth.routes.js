@@ -95,50 +95,53 @@ router.post('/login', isLoggedOut, (req, res, next) => {
       .catch(error => next(error));
   });
 
-router.get('/userProfile', isLoggedIn, async (req, res) => {
-  try {
-    const user = await User.findById(req.session.currentUser._id).populate({
-      path: 'score',
-      populate: {
-        path: 'game',
-        model: 'Game'
+  router.get('/userProfile', isLoggedIn, async (req, res) => {
+    try {
+      const user = await User.findById(req.session.currentUser._id).populate({
+        path: 'score',
+        populate: {
+          path: 'game',
+          model: 'Game'
+        }
+      }).populate('like.game');
+      
+      const scores = user.score.map(score => {
+        return {
+          score: score.score,
+          gameName: score.game.name
+        }
+      });
+  
+      const scoresByGame = {};
+      user.score.forEach(score => {
+        const gameName = score.game.name;
+        if (!scoresByGame[gameName]) {
+          scoresByGame[gameName] = [];
+        }
+        scoresByGame[gameName].push(score.score);
+      });
+      const highScoresByGame = Object.entries(scoresByGame).map(([gameName, scores]) => {
+        return {
+          gameName: gameName,
+          highScore: scores.reduce((acc, curr) => Math.max(acc, curr), 0)
+        };
+      });
+  
+      const gamesLiked = user.like.map((like) => like.game);
+  
+      res.render('users/user-profile', { 
+        userInSession: req.session.currentUser,
+        scores: user.score,
+        layout: "loggedin-user.hbs",
+        highScoresByGame: highScoresByGame,
+        gamesLiked: gamesLiked,
+      });
+      } catch (err) {
+        console.log(err);
+        res.redirect('/login');
       }
-    });
-    
-    const scores = user.score.map(score => {
-      return {
-        score: score.score,
-        gameName: score.game.name
-      }
-    });
-
-    const scoresByGame = {};
-    user.score.forEach(score => {
-      const gameName = score.game.name;
-      if (!scoresByGame[gameName]) {
-        scoresByGame[gameName] = [];
-      }
-      scoresByGame[gameName].push(score.score);
-    });
-    const highScoresByGame = Object.entries(scoresByGame).map(([gameName, scores]) => {
-      return {
-        gameName: gameName,
-        highScore: scores.reduce((acc, curr) => Math.max(acc, curr), 0)
-      };
-    });
-
-    res.render('users/user-profile', { 
-      userInSession: req.session.currentUser,
-      scores: user.score,
-      layout: "loggedin-user.hbs",
-      highScoresByGame: highScoresByGame,
-    });
-    } catch (err) {
-      console.log(err);
-      res.redirect('/login');
-    }
-});
-
+  });
+  
 router.post('/logout', isLoggedIn, (req, res, next) => {
     req.session.destroy(err => {
       if (err) next(err);

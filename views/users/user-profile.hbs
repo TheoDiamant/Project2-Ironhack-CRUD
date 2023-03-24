@@ -46,7 +46,17 @@
                 {{/if}}
               {{#if userInSession}}
       </div>
-      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, asperiores provident ea eaque quis omnis adipisci in exercitationem necessitatibus dolorem.</div>
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+         {{#if userInSession.like.length}}
+    <ul>
+      {{#each userInSession.like}}
+        <li>{{this.game.name}}</li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p>No likes yet.</p>
+  {{/if}}
+      </div>
       <div class="tab-pane fade" id="disabled" role="tabpanel" aria-labelledby="disabled-tab">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit rem accusamus officia quia eos ducimus consequuntur! Impedit aliquid vero suscipit.</div>
     </div>
   </div>
@@ -70,12 +80,6 @@
 
 </div>
 
-<div class="test-like">
-{{#if userInSession.like}}
-
-<p>{{userInSession.like.game.name}}</p>
-{{/if}}
-</div>
 
 <script>
   window.onload =() => {
