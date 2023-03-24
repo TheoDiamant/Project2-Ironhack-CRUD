@@ -28,9 +28,6 @@
 
 
 
-
-
-
 body {
   height: 100vh;
   /* background: no-repeat url(/images/naruto-images/bg.png); */
@@ -53,6 +50,9 @@ p {
 
 span {
   color: var(--orange-color);
+}
+.side{
+  margin-top: 2.5em;
 }
 
 .naruto {
@@ -96,7 +96,8 @@ canvas {
 
 .start-button,
 .restart-button {
-  padding: 20px 100px;
+  height: 3em;
+  padding: 20px;
   background-color: var(--orange-color);
   border-radius: 3px;
   color: var(--white);
