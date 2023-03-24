@@ -208,7 +208,7 @@ router.post("/game/:id/comments", isLoggedIn, (req, res, next) => {
       res.status(500).json({ error: "Internal server error" });
     }
 
-    User.findOne({username: "testfinal"})
+    User.findOne({username: "theodiamant"})
     .populate("like")
     .then(user => {
         console.log(user);
