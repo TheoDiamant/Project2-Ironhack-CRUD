@@ -117,6 +117,12 @@ router.get("/game/:id", isLoggedIn, (req, res, next) => {
         .catch((err) => next(err));
     })
     .catch((err) => next(err));
+
+    Game.findOne({ name: "JetPackMan" })
+    .populate("score")
+    .then((user) => {
+      console.log(user);
+    });
 });
 
 router.post("/scores", isLoggedIn, async (req, res, next) => {

@@ -385,6 +385,8 @@ const myGameArea = {
 
         }
         else {
+            Score.saveScore(player.score)
+                console.log(player.score)
             let obj = {
                 'name' : player.playerName,
                 'coins' : player.coins,
@@ -419,8 +421,7 @@ const myGameArea = {
                 ctx.fillText("High Score Board", myGameArea.canvas.width / 2 , myGameArea.canvas.height / 2 -30 );
                 ctx.fillStyle = "white";
                 ctx.strokeRect(myGameArea.canvas.width / 2 -200 , myGameArea.canvas.height / 2 -20 , 400, 1);
-                Score.saveScore(player.score)
-                console.log(player.sscore)
+                
 
                 ctx.fillStyle = "white";
                 ctx.font = "bold italic 20pt VT323";
