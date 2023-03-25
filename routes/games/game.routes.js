@@ -54,7 +54,7 @@ router.get("/game/:id", isLoggedIn, (req, res, next) => {
                   .filter((score) => score.game.name === "Snake")
                   .map((score) => score.score);
                 const maxSnakeScore = Math.max(...snakeScores);
-                if (!maxSnakeScore || maxSnakeScore < 5) {
+                if (!maxSnakeScore || maxSnakeScore <= 5) {
                   req.flash(
                     "error",
                     "You need to do 5 points in snake to play Naruto"
@@ -89,7 +89,7 @@ router.get("/game/:id", isLoggedIn, (req, res, next) => {
                   })
                   .map((score) => score.score);
                 const maxNarutoScore = Math.max(...narutoScores);
-                if (!maxNarutoScore || maxNarutoScore < 5) {
+                if (!maxNarutoScore || maxNarutoScore <= 5) {
                   req.flash(
                     "error",
                     "You need to do 5 points in Naruto to play JetPackMan"
